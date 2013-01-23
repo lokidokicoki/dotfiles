@@ -1,3 +1,4 @@
+alias l="ls"
 alias vi="gvim"
 alias q="exit"
 alias a="clear"
@@ -12,4 +13,5 @@ alias gro="git rebase origin/master"
 alias gcm="git checkout master"
 
 alias thor="ssh -X robint@192.168.0.4"
+alias test="ssh -X robint@192.168.0.121"
 alias ra='sudo service apache2 restart'
