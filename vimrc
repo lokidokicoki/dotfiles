@@ -1,3 +1,4 @@
+
 " display filename and path in window title
 set title
 
@@ -60,6 +61,7 @@ set modeline
 
 set number
 
+filetype on
 filetype plugin on
 syntax on
 
@@ -141,4 +143,8 @@ nnoremap <C-Right> :tabnext<CR>
 
 let notabs = 1
 nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
+"
+" set up pathogen
+execute pathogen#infect()
 
+nmap <F8> :TagbarToggle<CR>
