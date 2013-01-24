@@ -148,3 +148,9 @@ nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Ba
 execute pathogen#infect()
 
 nmap <F8> :TagbarToggle<CR>
+
+" autoopen tag bar for lua
+if has("gui_running")
+    autocmd BufEnter *.lua nested TagbarOpen
+    autocmd BufEnter *.js nested TagbarOpen
+endif
