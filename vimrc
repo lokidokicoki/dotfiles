@@ -152,5 +152,5 @@ nmap <F8> :TagbarToggle<CR>
 " autoopen tag bar for lua
 if has("gui_running")
     autocmd BufEnter *.lua nested TagbarOpen
-    autocmd BufEnter *.js nested TagbarOpen
+    autocmd BufEnter *.py nested TagbarOpen
 endif
