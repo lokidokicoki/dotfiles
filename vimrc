@@ -154,5 +154,6 @@ if has("gui_running")
 	if !&diff
     	autocmd BufEnter *.lua nested TagbarOpen
     	autocmd BufEnter *.py nested TagbarOpen
+    	autocmd BufEnter *.js nested TagbarOpen
 	end
 endif
