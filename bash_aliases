@@ -1,4 +1,4 @@
-alias l="ls"
+alias ls="ls --color"
 alias vi="gvim"
 alias q="exit"
 alias a="clear"
