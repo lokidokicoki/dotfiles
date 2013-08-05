@@ -160,30 +160,6 @@ function exaudio {
 
 #test -r /etc/bash_completion && source /etc/bash_completion
 
-alias apt='aptitude'
-alias dig='dig +multi'
-alias dquilt='QUILT_PATCHES=debian/patches quilt'
-alias dstat='dstat --bw'
-alias dux='du -xm --max-depth=1'
-alias e="$EDITOR"
-alias g=git
-alias gdb='gdb -silent'
-alias hman='man --html=browser-pause'
-#alias gnutls-cli="gnutls-cli --x509cafile /etc/ssl/certs/ca-certificates.crt"
-alias la='ls -A'
-alias ll='ls -lh'
-alias massif='valgrind --tool=massif --depth=5 --alloc-fn={g_malloc,g_realloc,g_try_malloc,g_malloc0,g_mem_chunk_alloc}'
-alias mysql='mysql --pager'
-alias ping='ping -n'
-alias pol='apt-cache policy'
-alias rsync='rsync -h'
-alias units='units --verbose'
-alias wgoat='wget'
-alias whois='whois -H'
-alias xc='xclip -selection clipboard -in'
-alias xp='xclip -selection clipboard -out'
-alias xse='tail --follow=name ~/.xsession-errors -n 0'
-
 case $- in
 *i*)
 	source ~/.bash_aliases
@@ -200,13 +176,5 @@ fi
 case $HOSTNAME in
 durandal)
 	alias nogba='wine ~/nogba/NO\$GBA.EXE'
-	;;
-lysander)
-	alias vim='c:\\Program\ Files\ \(x86\)\\vim\\vim73\\vim.exe'
-	alias gvim='c:\\Program\ Files\ \(x86\)\\vim\\vim73\\gvim.exe'
-	;;
-xerces)
-	alias hdsleep='sudo hdparm -y /dev/hd[acdef]'
-	#alias update-menus='update-menus --nodefaultdirs --menufilesdir ~/.menu/'
 	;;
 esac
