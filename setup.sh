@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# need to document
 HERE=$(pwd)
 echo 'Setup dotfiles'
 
