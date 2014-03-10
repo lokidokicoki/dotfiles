@@ -22,8 +22,8 @@ alias xc='xclip -selection clipboard -in'
 alias xp='xclip -selection clipboard -out'
 alias xse='tail --follow=name ~/.xsession-errors -n 0'
 
-alias ls="ls --color"
-alias vi="gvim"
+alias ls="ls -G"
+alias vi="mvim"
 alias q="exit"
 alias a="clear"
 
@@ -38,6 +38,4 @@ alias gcm="git checkout master"
 alias grod="git rebase origin/development"
 alias gcd="git checkout development"
 
-alias thor="ssh -X robint@192.168.0.4"
-alias test="ssh -X robint@192.168.0.121"
 alias ra="sudo service apache2 restart"
