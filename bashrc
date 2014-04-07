@@ -50,6 +50,10 @@ if test -f /etc/bash_completion.d/git; then
 	source /etc/bash_completion.d/git
 elif test -f /opt/local/share/doc/git-core/contrib/completion/git-completion.bash; then
 	source /opt/local/share/doc/git-core/contrib/completion/git-completion.bash
+elif test -f /usr/local/git/contrib/completion/git-completion.bash; then
+	# Darwin only?
+	source /usr/local/git/contrib/completion/git-completion.bash
+	source /usr/local/git/contrib/completion/git-prompt.sh
 fi
 
 # best prompt ever!
@@ -68,6 +72,12 @@ function user_colour {
 		printf "${csi_green}"
 	fi
 }
+
+# Git branch in prompt.
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
 csi='\033['
 csi_default=${csi}0m
 csi_cyan=${csi}36m
