@@ -157,3 +157,5 @@ if has("gui_running")
     	autocmd BufEnter *.js nested TagbarOpen
 	end
 endif
+
+au BufRead,BufNewFile *.md set ft=markdown
