@@ -40,3 +40,4 @@ case $- in
 	source ~/.bashrc
 	;;
 esac
+export PATH=/usr/local/bin:$PATH

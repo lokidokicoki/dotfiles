@@ -31,6 +31,7 @@ set laststatus=2
 
 " highlight current line
 " set cursorline
+let g:tagbar_ctags_bin='/usr/local/bin/ctags'  " Proper Ctags locations
 
 " emulate default status line; add git branch info
 " requires addon from http://github.com/taq/vim-git-branch-info
@@ -148,6 +149,7 @@ nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Ba
 execute pathogen#infect()
 
 nmap <F8> :TagbarToggle<CR>
+nmap <F5> :Texplore<CR>
 
 " autoopen tag bar for lua
 if has("gui_running")
