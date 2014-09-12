@@ -41,6 +41,19 @@ let g:git_branch_status_nogit=''
 if exists ("GitBranchInfoString")
     set statusline=%<%f\ %{GitBranchInfoString()}\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 en
+
+if !&diff
+	let g:syntastic_check_on_open=1
+	let g:syntastic_enable_signs=1
+	let g:syntastic_auto_loc_list=1
+	let g:syntastic_always_populate_loc_list=1
+	let g:syntastic_check_on_wq=0
+	set statusline=%#warningmsg#%{SyntasticStatuslineFlag()}%*%t[%{strlen(&fenc)?&fenc:'none'}%{&ff}],%h%m%r%y%=%c,%l/%L\ %P
+endif
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
 set ruler
 
 " show partial command in status line
@@ -150,6 +163,7 @@ execute pathogen#infect()
 
 nmap <F8> :TagbarToggle<CR>
 nmap <F5> :Texplore<CR>
+nmap <F10> :Errors<CR>
 
 " autoopen tag bar for lua
 if has("gui_running")
