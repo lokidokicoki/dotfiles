@@ -1,8 +1,18 @@
 
 " display filename and path in window title
 set title
+" set up pathogen
+call pathogen#infect()
 
-colorscheme koehler
+filetype on
+filetype plugin on
+syntax enable
+
+let g:solarized_termtrans = 1
+set background=dark
+"colorscheme koehler
+colorscheme solarized
+syntax on
 
 " taken from debian.vim
 set nocompatible
@@ -54,6 +64,8 @@ endif
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
 
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
 set ruler
 
 " show partial command in status line
@@ -74,10 +86,6 @@ set linebreak
 set modeline
 
 set number
-
-filetype on
-filetype plugin on
-syntax on
 
 " hide toolbars, tearoff menu items and don't fork
 set guioptions-=T
@@ -143,6 +151,7 @@ endif
 "set list
 
 "autocmd BufWritePost,FileWritePost /home/sam/src/occ/data/occ.py silent !ln -sf <afile>:p ~/.openoffice.org2/user/Scripts/python/occ.py
+au BufWritePost,FileWritePost *.scss silent !sass --update <afile>:p:h/styles.scss
 
 if &term =~ "screen"
 	set ttymouse=xterm2
@@ -157,9 +166,6 @@ nnoremap <C-Right> :tabnext<CR>
 
 let notabs = 1
 nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
-"
-" set up pathogen
-execute pathogen#infect()
 
 nmap <F8> :TagbarToggle<CR>
 nmap <F5> :Texplore<CR>
@@ -175,3 +181,9 @@ if has("gui_running")
 endif
 
 au BufRead,BufNewFile *.md set ft=markdown
+
+if filereadable('.jshintrc')
+  let g:syntastic_javascript_jshint_args = '--config .jshintrc'
+else
+  let g:syntastic_javascript_jshint_args = '--config ~/.jshintrc'
+endif

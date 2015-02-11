@@ -183,8 +183,4 @@ if test -z "$CLICOLOR"; then
 	alias ls='ls --color=auto'
 fi
 
-case $HOSTNAME in
-durandal)
-	alias nogba='wine ~/nogba/NO\$GBA.EXE'
-	;;
-esac
+fortune
