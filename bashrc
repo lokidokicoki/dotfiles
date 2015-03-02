@@ -18,8 +18,6 @@ shopt -s cdspell
 shopt -s histverify
 shopt -s no_empty_cmd_completion
 
-export DJANGO_COLORS="light"
-
 export GREP_OPTIONS='--color=auto'
 
 export EDITOR=vim
@@ -147,26 +145,6 @@ function batchfg {
 #function info {
 #	gnome-open "http://localhost/cgi-bin/info2www?($1)$2"
 #}
-
-function svngrep {
-	find -name '.svn' -prune -or -exec grep "$@" {} +
-}
-
-function debskew {
-	apt-cache showsrc "$1" \
-		| grep-dctrl . --show=binary -n \
-		| tr ', ' '\n' \
-		| sort -u \
-		| xargs -r dpkg -l
-}
-
-function rb {
-	env $(envof $(pgrep rhythmbox) | grep ^DBUS_SESSION_BUS_ADDRESS=) rhythmbox-client "$@"
-}
-
-function exaudio {
-	ffmpeg -i "$1" -acodec copy -vn "$2"
-    }
 
 #test -r /etc/bash_completion && source /etc/bash_completion
 

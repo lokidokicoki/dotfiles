@@ -1,7 +1,4 @@
 alias dig='dig +multi'
-alias dquilt='QUILT_PATCHES=debian/patches quilt'
-alias dstat='dstat --bw'
-alias dux='du -xm --max-depth=1'
 alias e="$EDITOR"
 alias g=git
 alias gdb='gdb -silent'
@@ -13,12 +10,10 @@ alias ll='ls -lh'
 alias ping='ping -n'
 alias pol='apt-cache policy'
 alias rsync='rsync -h'
-alias units='units --verbose'
 alias wgoat='wget'
 alias whois='whois -H'
 alias xc='xclip -selection clipboard -in'
 alias xp='xclip -selection clipboard -out'
-alias xse='tail --follow=name ~/.xsession-errors -n 0'
 alias vi="mvim"
 alias q="exit"
 alias a="clear"
@@ -35,7 +30,7 @@ alias gra="git rebase --abort"
 alias gcm="git checkout master"
 alias gcb="git checkout -b"
 alias gst="git stash"
-alias gsp="gs pop"
+alias gsp="git stash pop"
 alias ra="sudo apachectl restart"
 alias gb="git branch"
 alias gl="git lola"
