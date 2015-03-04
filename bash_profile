@@ -32,3 +32,4 @@ case $- in
 	;;
 esac
 export PATH=/usr/local/bin:$PATH
+export PATH=$HOME/.node/bin:$PATH
