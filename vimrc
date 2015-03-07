@@ -1,11 +1,42 @@
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'scrooloose/syntastic.git'
+Plugin 'mattn/emmet-vim'
+Plugin 'lilydjwg/colorizer'
+Plugin 'docunext/closetag.vim'
+Plugin 'othree/html5.vim'
+Plugin 'greplace.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'majutsushi/tagbar'
+Plugin 'marijnh/tern_for_vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'JavaScript-Indent'
+Plugin 'myhere/vim-nodejs-complete'
+Plugin 'edsono/vim-matchit'
+Plugin 'moll/vim-node'
+Plugin 'sidorares/node-vim-debugger'
+Plugin 'gabrielelana/vim-markdown'
+Plugin 'nono/jquery.vim'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'elzr/vim-json'
+
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 " display filename and path in window title
 set title
-" set up pathogen
-call pathogen#infect()
 
-filetype on
-filetype plugin on
 syntax enable
 
 let g:solarized_termtrans = 1
@@ -39,9 +70,11 @@ set showmatch
 " always display status line
 set laststatus=2
 
+set omnifunc=syntaxcomplete#Complete
 " highlight current line
 " set cursorline
 let g:tagbar_ctags_bin='/usr/local/bin/ctags'  " Proper Ctags locations
+"let g:tlist_ctags_cmd='/usr/local/bin/ctags'  " Proper Ctags locations
 
 " emulate default status line; add git branch info
 " requires addon from http://github.com/taq/vim-git-branch-info
@@ -119,6 +152,7 @@ autocmd filetypedetect BufNewFile,BufRead COMMIT_EDITMSG set ft=gitcommit
 " actionscript, not atlas
 autocmd! filetypedetect BufNewFile,BufRead *.as
 autocmd  filetypedetect BufNewFile,BufRead *.as set ft=actionscript
+au! BufRead,BufNewFile *.json set filetype=json
 
 set pastetoggle=<F10>
 
@@ -177,10 +211,14 @@ if has("gui_running")
     	autocmd BufEnter *.lua nested TagbarOpen
     	autocmd BufEnter *.py nested TagbarOpen
     	autocmd BufEnter *.js nested TagbarOpen
+"    	autocmd BufEnter *.lua nested Tlist
+"    	autocmd BufEnter *.py nested Tlist
+"    	autocmd BufEnter *.js nested Tlist
 	end
 endif
 
 au BufRead,BufNewFile *.md set ft=markdown
+au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
 if filereadable('.jshintrc')
   let g:syntastic_javascript_jshint_args = '--config .jshintrc'
