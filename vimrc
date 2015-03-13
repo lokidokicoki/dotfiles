@@ -27,7 +27,7 @@ Plugin 'gabrielelana/vim-markdown'
 Plugin 'nono/jquery.vim'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'elzr/vim-json'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdcommenter'
 
 " All of your Plugins must be added before the following line
