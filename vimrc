@@ -6,6 +6,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" plugins for Vundle to manage
 Plugin 'scrooloose/syntastic.git'
 Plugin 'mattn/emmet-vim'
 Plugin 'lilydjwg/colorizer'
@@ -13,12 +14,14 @@ Plugin 'docunext/closetag.vim'
 Plugin 'othree/html5.vim'
 Plugin 'greplace.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'majutsushi/tagbar'
+Plugin 'mtscout6/vim-tagbar-css'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'JavaScript-Indent'
+Plugin 'pangloss/vim-javascript'
 Plugin 'myhere/vim-nodejs-complete'
 Plugin 'edsono/vim-matchit'
 Plugin 'moll/vim-node'
@@ -27,8 +30,16 @@ Plugin 'gabrielelana/vim-markdown'
 Plugin 'nono/jquery.vim'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'elzr/vim-json'
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'sirver/ultisnips'
+Plugin 'burnettk/vim-angular'
+Plugin 'matthewsimo/angular-vim-snippets'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'honza/vim-snippets'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'rtregaskis/abacus.vim'
 Plugin 'scrooloose/nerdcommenter'
+
+"Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -36,6 +47,9 @@ filetype plugin indent on    " required
 
 " display filename and path in window title
 set title
+
+" allow for edited buffers that can be invisible
+set hidden
 
 syntax enable
 
@@ -85,6 +99,7 @@ if exists ("GitBranchInfoString")
     set statusline=%<%f\ %{GitBranchInfoString()}\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 en
 
+" syntastic settings
 if !&diff
 	let g:syntastic_check_on_open=1
 	let g:syntastic_enable_signs=1
@@ -97,7 +112,23 @@ endif
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
 
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+" emmet settings
+let g:user_emmet_install_global = 0
+let g:user_emmet_expandabbr_key = '<tab>'
+autocmd FileType html,css,scss EmmetInstall
+
+" Ultisnips settings
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-u>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" NERDtree settings
+autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 set ruler
 
@@ -195,8 +226,8 @@ endif
 " match TrailWhitespace /\s\+$\| \+\ze\t\|[^\t]\zs\t\+/
 "autocmd Syntax * syn match TrailWhitespace /\s\+$\| \+\ze\t/
 "
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
+nnoremap <silent> <F2> :bp<CR>
+nnoremap <silent> <F3> :bnext<CR>
 
 let notabs = 1
 nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
@@ -211,9 +242,6 @@ if has("gui_running")
     	autocmd BufEnter *.lua nested TagbarOpen
     	autocmd BufEnter *.py nested TagbarOpen
     	autocmd BufEnter *.js nested TagbarOpen
-"    	autocmd BufEnter *.lua nested Tlist
-"    	autocmd BufEnter *.py nested Tlist
-"    	autocmd BufEnter *.js nested Tlist
 	end
 endif
 
@@ -225,3 +253,5 @@ if filereadable('.jshintrc')
 else
   let g:syntastic_javascript_jshint_args = '--config ~/.jshintrc'
 endif
+
+let g:mustache_abbreviations = 1
