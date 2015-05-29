@@ -33,7 +33,6 @@ Plugin 'elzr/vim-json'
 Plugin 'sirver/ultisnips'
 Plugin 'burnettk/vim-angular'
 Plugin 'matthewsimo/angular-vim-snippets'
-Plugin 'Shougo/neocomplete.vim'
 Plugin 'honza/vim-snippets'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'rtregaskis/abacus.vim'
@@ -127,8 +126,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 " NERDtree settings
-autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 set ruler
 
@@ -226,8 +225,8 @@ endif
 " match TrailWhitespace /\s\+$\| \+\ze\t\|[^\t]\zs\t\+/
 "autocmd Syntax * syn match TrailWhitespace /\s\+$\| \+\ze\t/
 "
-nnoremap <silent> <F2> :bp<CR>
-nnoremap <silent> <F3> :bnext<CR>
+nnoremap <silent> <F2> :tabprev<CR>
+nnoremap <silent> <F3> :tebnext<CR>
 
 let notabs = 1
 nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
