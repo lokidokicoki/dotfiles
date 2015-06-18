@@ -1,4 +1,26 @@
 {
 	"sub":true,
-	"loopfunc":true
+	"loopfunc":true,
+	"esnext":true,
+	"curly":true,
+	"eqeqeq":true,
+	"funcscope":false,
+	"latedef":true,
+	"maxparams":10,
+	"nonew":true,
+	"notypeof":true,
+	"nonbsp":true,
+	"strict":true,
+	"undef":true,
+	"unused":true,
+	"node":true,
+	"debug":true,
+	"devel":true,
+	"shadow":"outer",
+	"singleGroups":true,
+	"globals":{
+		"$":true,
+		"jQuery":true
+	},
+	"browser":true
 }
