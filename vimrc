@@ -139,6 +139,7 @@ set wildmenu
 
 set shiftwidth=4
 set tabstop=4
+set softtabstop=4
 
 set autoindent
 set noet
@@ -172,6 +173,7 @@ autocmd FileType debchangelog setlocal expandtab
 
 " don't use tabs in python files
 autocmd FileType python setlocal expandtab
+autocmd FileType javascript setlocal expandtab
 
 if filereadable ("~/.vim/python.vim")
     autocmd FileType python source ~/.vim/python.vim
