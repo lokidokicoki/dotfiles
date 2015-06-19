@@ -17,7 +17,7 @@
 	"debug":true,
 	"devel":true,
 	"shadow":"outer",
-	"singleGroups":true,
+	"singleGroups":false,
 	"globals":{
 		"$":true,
 		"jQuery":true
