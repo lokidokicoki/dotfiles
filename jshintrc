@@ -22,5 +22,6 @@
 		"$":true,
 		"jQuery":true
 	},
+	"jquery":true,
 	"browser":true
 }
