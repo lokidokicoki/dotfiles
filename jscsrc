@@ -1,0 +1,8 @@
+{
+	"preset": "google",
+	"validateQuoteMarks": null,
+	"maximumLineLength": null,
+	"disallowMultipleLineBreaks": null,
+	"validateIndentation":4,
+	"disallowMultipleVarDecl":"strict"
+}

@@ -12,7 +12,7 @@
 	},
 	"iterator":false,
 	"latedef":true,
-	"maxcomplexity":6,
+	"maxcomplexity":10,
 	"maxdepth":5,
 	"maxparams":5,
 	"noarg":true,

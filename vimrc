@@ -105,6 +105,7 @@ if !&diff
 	let g:syntastic_auto_loc_list=1
 	let g:syntastic_always_populate_loc_list=1
 	let g:syntastic_check_on_wq=0
+	let g:syntastic_javascript_checkers = ['jscs', 'jshint']
 	set statusline=%#warningmsg#%{SyntasticStatuslineFlag()}%*%t[%{strlen(&fenc)?&fenc:'none'}%{&ff}],%h%m%r%y%=%c,%l/%L\ %P
 endif
 "set statusline+=%#warningmsg#
@@ -168,7 +169,7 @@ set display+=lastline
 
 set spelllang=en_gb
 
-autocmd FileType mail setlocal spell
+setlocal spell
 autocmd FileType debchangelog setlocal expandtab
 
 " don't use tabs in python files
