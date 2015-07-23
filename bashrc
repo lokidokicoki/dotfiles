@@ -104,20 +104,6 @@ function gvimcpp {
 	gvim $1.cpp "+new $1.h"
 }
 
-#function remotesign {
-#	set -e
-#
-#	host="$1"
-#
-#	while shift; do
-#		test -n "$1" || continue
-#
-#		data=$(ssh "$host" cat "$file")
-#		sign=$(gpg --armor --detach-sign <<< "$data")
-#		ssh "$host" cat '>' "$file.asc"
-#	done
-#}
-
 function envof {
 	file=/proc/${1:?Usage: $0 pid}/environ
 	cmd="cat $file"
@@ -161,12 +147,19 @@ if test -z "$CLICOLOR"; then
 	alias ls='ls --color=auto'
 fi
 
-fortune
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
+# use NVM to handle node & iojs
 export NVM_DIR=$(brew --prefix)/var/nvm
 source $(brew --prefix nvm)/nvm.sh
 
+# include app-tools on path
 export PATH="$PATH:$HOME/work/app-tools/bin"
+
+# stuff to tell the user....
+fortune
+
+echo ""
+echo "---"
+echo "Using: `nvm current`"

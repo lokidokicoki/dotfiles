@@ -250,6 +250,10 @@ endif
 au BufRead,BufNewFile *.md set ft=markdown
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
+au BufNewFile,BufRead .bashrc*,bashrc,bash.bashrc,.bash_profile*,bash_profile,bash_logout,.bash_aliases,bash_aliases,.bash_logout*,*.bash,*.ebuild call SetFileTypeSH("bash")
+au BufNewFile,BufRead *jshintrc,*jscsrc call SetFileTypeSH("json")
+au BufNewFile,BufRead *gitconfig call SetFileTypeSH("gitconfig")
+
 if filereadable('.jshintrc')
   let g:syntastic_javascript_jshint_args = '--config .jshintrc'
 else
