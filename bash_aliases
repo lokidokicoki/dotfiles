@@ -61,3 +61,5 @@ alias ems="ember serve"
 alias emb="ember build"
 alias embp="ember build -prod"
 alias bi="bower install"
+alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
+alias ami="ssh -l ec2-user -i ~/.ssh/drg-euw1-cider-development.pem  euw1a-web02.dresources.com"
