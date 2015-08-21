@@ -112,10 +112,13 @@ endif
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
 
+" stop vim making backups for crontab
+autocmd filetype crontab setlocal nobackup nowritebackup
+
 " emmet settings
 let g:user_emmet_install_global = 0
 let g:user_emmet_expandabbr_key = '<tab>'
-autocmd FileType html,css,scss EmmetInstall
+autocmd FileType html,hbs,handlebars,css,scss EmmetInstall
 
 " Ultisnips settings
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.

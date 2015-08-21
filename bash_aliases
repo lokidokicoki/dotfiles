@@ -63,3 +63,6 @@ alias embp="ember build -prod"
 alias bi="bower install"
 alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
 alias ami="ssh -l ec2-user -i ~/.ssh/drg-euw1-cider-development.pem  euw1a-web02.dresources.com"
+alias fl="forever list"
+alias fsp="forever stop"
+alias amiprod='ssh -l ec2-user -i ~/.ssh/drg-euw1-cider-development.pem 172.20.65.194'
