@@ -173,6 +173,7 @@ set display+=lastline
 set spelllang=en_gb
 
 setlocal spell
+set nospell
 autocmd FileType debchangelog setlocal expandtab
 
 " don't use tabs in python files
