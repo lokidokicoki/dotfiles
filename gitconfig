@@ -31,6 +31,6 @@
 [mergetool]
 	prompt = false
 [diff]
-	tool = vimdiff
+	tool = mvimdiff
 [difftool]
 	prompt = false
