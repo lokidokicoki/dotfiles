@@ -20,7 +20,7 @@ shopt -s no_empty_cmd_completion
 
 export GREP_OPTIONS='--color=auto'
 
-export EDITOR=vim
+export EDITOR=mvim
 
 if test -n "$DISPLAY"
 then
@@ -150,10 +150,6 @@ fi
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-# use NVM to handle node & iojs
-export NVM_DIR=$(brew --prefix)/var/nvm
-source $(brew --prefix nvm)/nvm.sh
-
 # include app-tools on path
 export PATH="$PATH:$HOME/work/app-tools/bin"
 
@@ -161,5 +157,8 @@ export PATH="$PATH:$HOME/work/app-tools/bin"
 fortune
 
 echo ""
-echo "---"
-echo "Using: `nvm current`"
+
+export PEBBLE_HOME=192.168.1.5
+export PEBBLE_HOME=192.168.164.11
+export PEBBLE_PHONE=$PEBBLLE_HOME
+export PEBBLE_EMULATOR=basalt
