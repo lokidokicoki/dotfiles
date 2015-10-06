@@ -66,3 +66,5 @@ alias ami="ssh -l ec2-user -i ~/.ssh/drg-euw1-cider-development.pem  euw1a-web02
 alias fl="forever list"
 alias fsp="forever stop"
 alias amiprod='ssh -l ec2-user -i ~/.ssh/drg-euw1-cider-development.pem 172.20.65.194'
+alias pbe="pebble build && pebble install --emulator basalt"
+alias pbi="pebble build && pebble install"
