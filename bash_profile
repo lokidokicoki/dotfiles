@@ -33,3 +33,4 @@ case $- in
 esac
 export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/.node/bin:$PATH
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
