@@ -7,12 +7,10 @@
 [core]
 	excludesfile = /Users/rtregaskis/.gitignore_global
 	editor = vim
+	compression = 0
+	pager = less -FRSX
 [color]
-	ui = auto
-	branch = auto
-	diff = auto
-	interactive = auto
-	status = auto
+	ui = true
 [push]
 	default = simple
 [alias]

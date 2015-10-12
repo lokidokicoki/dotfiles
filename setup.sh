@@ -12,3 +12,4 @@ ln -s $HERE/jshintrc ~/.jshintrc
 ln -s $HERE/jscsrc ~/.jscsrc
 ln -s $HERE/jsbeautifyrc ~/.jsbeautifyrc
 ln -s $HERE/gitconfig ~/.gitconfig
+ln -s $HERE/alias_completion.sh ~/.alias_completion.sh

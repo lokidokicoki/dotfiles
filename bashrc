@@ -54,6 +54,7 @@ elif test -f /usr/local/git/contrib/completion/git-completion.bash; then
 	source /usr/local/git/contrib/completion/git-prompt.sh
 fi
 
+
 # best prompt ever!
 #
 function smile {
@@ -140,6 +141,7 @@ case $- in
 	;;
 esac
 
+
 command -v gvfs-open &>/dev/null && alias open=gvfs-open
 
 if test -z "$CLICOLOR"; then
@@ -162,3 +164,6 @@ export PEBBLE_HOME=192.168.1.5
 export PEBBLE_HOME=192.168.164.11
 export PEBBLE_PHONE=$PEBBLLE_HOME
 export PEBBLE_EMULATOR=basalt
+
+
+source ~/dotfiles/alias_completion.sh
