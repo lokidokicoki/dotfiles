@@ -1,8 +1,16 @@
 {
-	"preset": "google",
-	"validateQuoteMarks": null,
-	"maximumLineLength": null,
-	"disallowMultipleLineBreaks": null,
-	"validateIndentation":4,
-	"disallowMultipleVarDecl":"strict"
+  "preset": "google",
+  "validateQuoteMarks": null,
+  "maximumLineLength": null,
+  "disallowMultipleLineBreaks": null,
+  "validateIndentation": 2,
+  "disallowMultipleVarDecl": "strict",
+  "jsDoc": {
+    "checkAnnotations": {
+      "preset": "jsdoc3",
+      "extra": {
+        "listens": true
+      }
+    }
+  }
 }
