@@ -1,0 +1,9 @@
+{
+  "attr-no-dup":true,
+  "attr-quote-style":"double",
+  "id-no-dup":true,
+  "tag-name-lowercase":true,
+  "tag-name-match":true,
+  "spec-char-escape":true,
+  "doctype-first":false
+}
