@@ -1,9 +1,14 @@
 {
-  "attr-no-dup":true,
-  "attr-quote-style":"double",
-  "id-no-dup":true,
-  "tag-name-lowercase":true,
-  "tag-name-match":true,
+  "attr-lowercase":true,
+  "attr-no-duplication":true,
+  "attr-unsafe-chars":true,
+  "attr-value-double-quotes":true,
+  "doctype-first":false,
+  "id-unique":true,
+  "inline-script-disabled":true,
+  "inline-style-disabled":true,
   "spec-char-escape":true,
-  "doctype-first":false
+  "tag-pair":true,
+  "tag-self-close":true,
+  "tagname-lowercase":true
 }
