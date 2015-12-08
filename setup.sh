@@ -13,4 +13,5 @@ ln -s $HERE/htmlhintrc ~/.htmlhintrc
 ln -s $HERE/jscsrc ~/.jscsrc
 ln -s $HERE/jsbeautifyrc ~/.jsbeautifyrc
 ln -s $HERE/gitconfig ~/.gitconfig
+ln -s $HERE/scss-lint.yml ~/.scss-lint.yml
 ln -s $HERE/alias_completion.sh ~/.alias_completion.sh
