@@ -15,3 +15,18 @@ ln -s $HERE/jsbeautifyrc.json ~/.jsbeautifyrc
 ln -s $HERE/gitconfig ~/.gitconfig
 ln -s $HERE/scss-lint.yml ~/.scss-lint.yml
 ln -s $HERE/alias_completion.sh ~/.alias_completion.sh
+
+DIRECTORY=~/.atom
+if [ -d "$DIRECTORY" ]; then
+  # Control will enter here if $DIRECTORY exists.
+  echo 'Replace atom configs'
+
+  for f in $HERE/atom/*; do
+    t=$(basename $f);
+
+    if [ -e "$DIRECTORY/$t" ]; then
+      rm "$DIRECTORY/$t"
+      ln -s "$f" "$DIRECTORY/$t"
+    fi
+  done
+fi

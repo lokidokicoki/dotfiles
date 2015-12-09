@@ -1,0 +1,69 @@
+"*":
+  "exception-reporting":
+    userId: "27b2fd09-e631-91d3-3ec3-1d9146e8c8a0"
+  "release-notes":
+    viewedVersion: "0.84.0"
+  welcome:
+    showOnStartup: false
+  metrics:
+    userId: "1d97568d6280c471b6a8b5daa602c60132bd51af"
+  editor:
+    invisibles: {}
+    fontFamily: "Source Code Pro"
+    lineHeight: 1.3
+    fontSize: 13
+  core:
+    ignoredNames: [
+      ".git"
+      ".svn"
+      ".DS_Store"
+    ]
+    disabledPackages: [
+      "markdown-pdf"
+      "symbols-tree-view"
+      "webbox-color"
+    ]
+    audioBeep: false
+    destroyEmptyPanes: false
+    themes: [
+      "nucleus-dark-ui"
+      "solarized-dark-syntax"
+    ]
+  autocomplete:
+    includeCompletionsFromAllBuffers: true
+  "vim-mode": {}
+  linter:
+    errorPanelHeight: 194
+    showErrorTabLine: true
+  "atom-beautify":
+    _analyticsUserId: "1e8dac51-7c32-4d2d-b7c4-4ea049a12642"
+    css_newline_between_rules: true
+    css_preserve_newlines: true
+    css_selector_separator_newline: true
+  minimap:
+    absoluteMode: true
+    plugins:
+      pigments: true
+  "bracket-matcher":
+    autocompleteBrackets: false
+    autocompleteSmartQuotes: false
+  "one-dark-ui": {}
+  "node-debugger":
+    nodePath: "/usr/local/bin/node"
+  "markdown-themeable-pdf":
+    enableLinkify: true
+  "linter-htmlhint":
+    executablePath: "/Users/rtregaskis/.node/bin/htmlhint"
+  "linter-tidy":
+    tidyExecutablePath: "/usr/local/bin/tidy"
+  "linter-scss-lint":
+    executablePath: "/Users/rtregaskis/.rbenv/shims/scss-lint"
+  docblockr: {}
+  "grunt-runner":
+    gruntPaths: [
+      "/Users/rtregaskis/.node/bin/grunt"
+    ]
+  "todo-show": {}
+  "tree-view":
+    hideVcsIgnoredFiles: true
+  "linter-jscs": {}
