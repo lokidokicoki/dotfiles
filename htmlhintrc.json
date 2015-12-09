@@ -3,12 +3,13 @@
   "attr-no-duplication":true,
   "attr-unsafe-chars":true,
   "attr-value-double-quotes":true,
+  "alt-require":false,
+  "src-not-empty":true,
   "doctype-first":false,
   "id-unique":true,
-  "inline-script-disabled":true,
+  "inline-script-disabled":false,
   "inline-style-disabled":true,
   "spec-char-escape":true,
   "tag-pair":true,
-  "tag-self-close":true,
   "tagname-lowercase":true
 }
