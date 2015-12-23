@@ -53,6 +53,12 @@ elif test -f /usr/local/git/contrib/completion/git-completion.bash; then
 	source /usr/local/git/contrib/completion/git-completion.bash
 	source /usr/local/git/contrib/completion/git-prompt.sh
 fi
+source ~/.git-prompt.sh
+
+
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    source `brew --prefix`/etc/bash_completion
+fi
 
 
 # best prompt ever!
@@ -164,6 +170,3 @@ export PEBBLE_HOME=192.168.1.5
 export PEBBLE_HOME=192.168.164.11
 export PEBBLE_PHONE=$PEBBLLE_HOME
 export PEBBLE_EMULATOR=basalt
-
-
-source ~/dotfiles/alias_completion.sh

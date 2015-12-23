@@ -13,3 +13,7 @@
 #     'prefix': 'log'
 #     'body': 'console.log $1'
 #
+'.source.js':
+  'add use strict':
+    'prefix': 'us'
+    'body': '\'use strict\';'

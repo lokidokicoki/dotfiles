@@ -53,11 +53,11 @@
   "markdown-themeable-pdf":
     enableLinkify: true
   "linter-htmlhint":
-    executablePath: "/Users/rtregaskis/.node/bin/htmlhint"
+    executablePath: "/usr/local/bin/htmlhint"
   "linter-tidy":
     tidyExecutablePath: "/usr/local/bin/tidy"
   "linter-scss-lint":
-    executablePath: "/Users/rtregaskis/.rbenv/shims/scss-lint"
+    executablePath: "/usr/local/bin/scss-lint"
   docblockr: {}
   "grunt-runner":
     gruntPaths: [

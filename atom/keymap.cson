@@ -18,3 +18,4 @@
 #
 '.editor':
   'ctrl-cmd-s': 'sort-lines:sort'
+  'ctrl-alt-p': 'project-manager:list-projects'
