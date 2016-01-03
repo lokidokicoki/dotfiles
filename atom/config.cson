@@ -22,12 +22,14 @@
       "markdown-pdf"
       "symbols-tree-view"
       "webbox-color"
+      "linter-jscs"
+      "linter-jshint"
     ]
     audioBeep: false
     destroyEmptyPanes: false
     themes: [
-      "nucleus-dark-ui"
-      "solarized-dark-syntax"
+      "seti-ui"
+      "seti-syntax"
     ]
   autocomplete:
     includeCompletionsFromAllBuffers: true
