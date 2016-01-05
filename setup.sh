@@ -8,7 +8,6 @@ ln -s $HERE/bashrc ~/.bashrc
 ln -s $HERE/bash_aliases ~/.bash_aliases
 ln -s $HERE/bash_profile ~/.bash_profile
 ln -s $HERE/vimrc ~/.vimrc
-ln -s $HERE/eslintrc.js ~/.eslintrc.js
 ln -s $HERE/jshintrc.json ~/.jshintrc
 ln -s $HERE/htmlhintrc.json ~/.htmlhintrc
 ln -s $HERE/jscsrc.json ~/.jscsrc
