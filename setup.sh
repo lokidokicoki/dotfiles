@@ -15,6 +15,7 @@ ln -s $HERE/jsbeautifyrc.json ~/.jsbeautifyrc
 ln -s $HERE/gitconfig ~/.gitconfig
 ln -s $HERE/git-prompt.sh ~/.git-prompt.sh
 ln -s $HERE/scss-lint.yml ~/.scss-lint.yml
+ln -s $HERE/npmrc ~/.npmrc
 
 DIRECTORY=~/.atom
 if [ -d "$DIRECTORY" ]; then
