@@ -168,5 +168,12 @@ echo ""
 
 export PEBBLE_HOME=192.168.1.5
 export PEBBLE_HOME=192.168.164.11
-export PEBBLE_PHONE=$PEBBLLE_HOME
+export PEBBLE_PHONE=$PEBBLE_HOME
 export PEBBLE_EMULATOR=basalt
+
+NPM_PACKAGES="${HOME}/.npm-packages"
+
+PATH="$NPM_PACKAGES/bin:$PATH"
+
+unset MANPATH
+export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
