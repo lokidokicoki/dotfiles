@@ -56,11 +56,6 @@ fi
 source ~/.git-prompt.sh
 
 
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    source `brew --prefix`/etc/bash_completion
-fi
-
-
 # best prompt ever!
 #
 function smile {
@@ -155,25 +150,5 @@ if test -z "$CLICOLOR"; then
 	alias ls='ls --color=auto'
 fi
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-# include app-tools on path
-export PATH="$PATH:$HOME/work/app-tools/bin"
-
 # stuff to tell the user....
 fortune
-
-echo ""
-
-export PEBBLE_HOME=192.168.1.5
-export PEBBLE_HOME=192.168.164.11
-export PEBBLE_PHONE=$PEBBLE_HOME
-export PEBBLE_EMULATOR=basalt
-
-NPM_PACKAGES="${HOME}/.npm-packages"
-
-PATH="$NPM_PACKAGES/bin:$PATH"
-
-unset MANPATH
-export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"

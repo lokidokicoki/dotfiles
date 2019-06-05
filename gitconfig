@@ -2,10 +2,9 @@
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
 [user]
-	name = rtregaskis
-	email = rtregaskis@dresources.com
+	name = lokidokicoki
+	email = lokidokicoki@gmail.com
 [core]
-	excludesfile = /Users/rtregaskis/.gitignore_global
 	editor = vim
 	compression = 0
 	pager = less -FRSX
@@ -20,8 +19,6 @@
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3
-[credential]
-	helper = osxkeychain
 [filter "lfs"]
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f

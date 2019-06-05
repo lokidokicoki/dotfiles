@@ -2,32 +2,33 @@
 
 # need to document
 HERE=$(pwd)
+echo $HOME
 echo 'Setup dotfiles'
 
-ln -s $HERE/bashrc ~/.bashrc
-ln -s $HERE/bash_aliases ~/.bash_aliases
-ln -s $HERE/bash_profile ~/.bash_profile
-ln -s $HERE/vimrc ~/.vimrc
-ln -s $HERE/jshintrc.json ~/.jshintrc
-ln -s $HERE/htmlhintrc.json ~/.htmlhintrc
-ln -s $HERE/jscsrc.json ~/.jscsrc
-ln -s $HERE/jsbeautifyrc.json ~/.jsbeautifyrc
-ln -s $HERE/gitconfig ~/.gitconfig
-ln -s $HERE/git-prompt.sh ~/.git-prompt.sh
-ln -s $HERE/scss-lint.yml ~/.scss-lint.yml
-ln -s $HERE/npmrc ~/.npmrc
+FILES=('profile' 'bash_aliases' 'bashrc' 'git-prompt.sh' 'gitconfig')
 
-DIRECTORY=~/.atom
-if [ -d "$DIRECTORY" ]; then
-  # Control will enter here if $DIRECTORY exists.
-  echo 'Replace atom configs'
+ELEMENTS=${#FILES[@]}
 
-  for f in $HERE/atom/*; do
-    t=$(basename $f);
+echo "array count $ELEMENTS"
 
-    if [ -e "$DIRECTORY/$t" ]; then
-      rm "$DIRECTORY/$t"
-      ln -s "$f" "$DIRECTORY/$t"
+for (( i=0;i<$ELEMENTS;i++)); do
+  FILE=${FILES[${i}]}
+  echo "current file: $HOME/.$FILE"
+  if [ ! -h $HOME/.$FILE ]; then
+    echo "no link for $FILE"
+    if [ -f $HOME/.$FILE ]; then
+      mv $HOME/.$FILE $HOME/.$FILE-old
     fi
-  done
-fi
+    ln -s $HERE/$FILE $HOME/.$FILE
+  else
+    echo "link exists for  file $FILE"
+  fi
+done
+# ln -s $HERE/bashrc ~/.bashrc
+# ln -s $HERE/bash_aliases ~/.bash_aliases
+# ln -s $HERE/profile ~/.profile
+# ln -s $HERE/vimrc ~/.vimrc
+# ln -s $HERE/gitconfig ~/.gitconfig
+# ln -s $HERE/git-prompt.sh ~/.git-prompt.sh
+# ln -s $HERE/npmrc ~/.npmrc
+
