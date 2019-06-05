@@ -152,3 +152,4 @@ fi
 
 # stuff to tell the user....
 fortune
+export PATH=~/bin:$PATH
