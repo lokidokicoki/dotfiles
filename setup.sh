@@ -5,7 +5,7 @@ HERE=$(pwd)
 echo $HOME
 echo 'Setup dotfiles'
 
-FILES=('profile' 'bash_aliases' 'bashrc' 'git-prompt.sh' 'gitconfig')
+FILES=('.profile' '.bash_aliases' '.bashrc' '.git-prompt.sh' '.gitconfig')
 
 ELEMENTS=${#FILES[@]}
 
@@ -13,15 +13,15 @@ echo "array count $ELEMENTS"
 
 for (( i=0;i<$ELEMENTS;i++)); do
   FILE=${FILES[${i}]}
-  echo "current file: $HOME/.$FILE"
-  if [ ! -h $HOME/.$FILE ]; then
+  echo "current file: $HOME/$FILE"
+  if [ ! -h $HOME/$FILE ]; then
     echo "no link for $FILE"
-    if [ -f $HOME/.$FILE ]; then
-      mv $HOME/.$FILE $HOME/.$FILE-old
+    if [ -f $HOME/$FILE ]; then
+      mv $HOME/$FILE $HOME/$FILE-old
     fi
-    ln -s $HERE/$FILE $HOME/.$FILE
+    ln -s $HERE/$FILE $HOME/$FILE
   else
-    echo "link exists for  file $FILE"
+    echo "link exists for file $FILE"
   fi
 done
 # ln -s $HERE/bashrc ~/.bashrc
