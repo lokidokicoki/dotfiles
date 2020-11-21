@@ -20,7 +20,7 @@ shopt -s no_empty_cmd_completion
 
 export GREP_OPTIONS='--color=auto'
 
-export EDITOR=mvim
+export EDITOR=vim
 
 if test -n "$DISPLAY"
 then
@@ -153,3 +153,9 @@ fi
 # stuff to tell the user....
 fortune
 export PATH=~/bin:$PATH
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH=$PATH:$HOME/.local/bin
