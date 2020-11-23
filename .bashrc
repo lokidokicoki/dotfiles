@@ -9,12 +9,7 @@ if test -n "$SSH_CONNECTION"; then
     tty -s || return
 fi
 
-# disable XON/XOFF so that we can use readline's forward-search-history command
-# by pressing C-s
-command -v stty &>/dev/null && stty ixon
-
 shopt -s cdspell
-#shopt -s failglob
 shopt -s histverify
 shopt -s no_empty_cmd_completion
 
@@ -31,10 +26,9 @@ fi
 export BROWSER
 
 export PAGER=less
-#export LESS='-icRFS'
 command -v lesspipe &>/dev/null && eval "$(lesspipe)"
 # see termcap(5) for an explanation of these codes
-#export LESS_TERMCAP_mb='\033[01;31m' # start blink
+export LESS_TERMCAP_mb='\033[01;31m' # start blink
 export LESS_TERMCAP_md=$'\E[0;31m' # start bold
 export LESS_TERMCAP_me=$'\E[0m' # back to normal
 export LESS_TERMCAP_so=$'\E[0;44;33m' # start standout (status line)
@@ -159,3 +153,7 @@ export PATH=~/bin:$PATH
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH=$PATH:$HOME/.local/bin
+
+export PATH=/usr/local/bin:$PATH
+export PATH=$HOME/.node/bin:$PATH
+export PATH=~/.npm-global/bin:$PATH

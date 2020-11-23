@@ -20,17 +20,16 @@ Darwin)
 esac
 
 case "${HOSTNAME%%.*}" in
-BIC6591)
-	export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+rator)
+	#export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+	echo 'Hello raptor'
 	;;
 esac
 
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # Source .bashrc if this is an interactive shell
 case $- in
 *i*)
 	source ~/.bashrc
 	;;
 esac
-export PATH=/usr/local/bin:$PATH
-export PATH=$HOME/.node/bin:$PATH
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
