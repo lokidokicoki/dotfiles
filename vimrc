@@ -23,20 +23,15 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'myhere/vim-nodejs-complete'
-Plugin 'edsono/vim-matchit'
-Plugin 'moll/vim-node'
-Plugin 'sidorares/node-vim-debugger'
 Plugin 'gabrielelana/vim-markdown'
 Plugin 'nono/jquery.vim'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'elzr/vim-json'
 Plugin 'sirver/ultisnips'
-Plugin 'burnettk/vim-angular'
-Plugin 'matthewsimo/angular-vim-snippets'
 Plugin 'honza/vim-snippets'
 Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'rtregaskis/abacus.vim'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'psf/black'
 
 "Plugin 'Valloric/YouCompleteMe'
 
@@ -141,18 +136,10 @@ set showcmd
 " display possible choices when tab completing
 set wildmenu
 
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
-
-set autoindent
 set noet
-
 set nowrap
 set linebreak
-
 set modeline
-
 set number
 
 " hide toolbars, tearoff menu items and don't fork
@@ -177,12 +164,23 @@ set nospell
 autocmd FileType debchangelog setlocal expandtab
 
 " don't use tabs in python files
-autocmd FileType python setlocal expandtab
 autocmd FileType javascript setlocal expandtab
 
 if filereadable ("~/.vim/python.vim")
     autocmd FileType python source ~/.vim/python.vim
 endif
+
+au FileType python set
+	\ shiftwidth=4
+	\ tabstop=4
+	\  softtabstop=4
+	\  autoindent
+	\  expandtab
+	\  textwidth=79
+	\  fileformat=unix
+
+autocmd BufWritePre *.py execute ':Black'
+
 
 autocmd filetypedetect BufNewFile,BufRead COMMIT_EDITMSG set ft=gitcommit
 
