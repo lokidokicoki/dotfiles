@@ -5,7 +5,7 @@ HERE=$(pwd)
 echo $HOME
 echo 'Setup dotfiles'
 
-FILES=('profile' 'bash_aliases' 'bashrc' 'git-prompt.sh' 'gitconfig', 'vimrc')
+FILES=('profile' 'bash_aliases' 'bashrc' 'git-prompt.sh' 'gitconfig' 'vimrc')
 
 ELEMENTS=${#FILES[@]}
 
@@ -19,7 +19,7 @@ for (( i=0;i<$ELEMENTS;i++)); do
     if [ -f $HOME/$FILE ]; then
       mv $HOME/$FILE $HOME/$FILE-old
     fi
-    ln -s $HERE/$FILE $HOME/$FILE
+    ln -s $HERE/$FILE $HOME/.$FILE
   else
     echo "link exists for file $FILE"
   fi
