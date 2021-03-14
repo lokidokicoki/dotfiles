@@ -29,3 +29,5 @@
 	tool = mvimdiff
 [difftool]
 	prompt = false
+[pull]
+	ff = only
