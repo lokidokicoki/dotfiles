@@ -8,6 +8,19 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+machineName=`uname -n`
+unamestr=`uname`
+
+echo "$machineName"
+if [[ "$machineName" == 'penguin' ]]; then
+
+    export SSH_AUTH_SOCK=~/.ssh/ssh-agent.$HOSTNAME.sock
+    ssh-add -l 2>/dev/null >/dev/null
+    if [ $? -ge 2 ]; then
+        ssh-agent -a "$SSH_AUTH_SOCK" >/dev/null
+    fi
+fi
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
