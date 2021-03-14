@@ -5,7 +5,7 @@ HERE=$(pwd)
 echo $HOME
 echo 'Setup dotfiles'
 
-FILES=('.profile' '.bash_aliases' '.bashrc' '.git-prompt.sh' '.gitconfig')
+FILES=('profile' 'bash_aliases' 'bashrc' 'git-prompt.sh' 'gitconfig', 'vimrc')
 
 ELEMENTS=${#FILES[@]}
 
