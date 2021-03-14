@@ -7,31 +7,34 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " plugins for Vundle to manage
-Plugin 'scrooloose/syntastic.git'
-Plugin 'mattn/emmet-vim'
-Plugin 'lilydjwg/colorizer'
-Plugin 'docunext/closetag.vim'
-Plugin 'othree/html5.vim'
-Plugin 'greplace.vim'
-Plugin 'scrooloose/nerdtree'
+
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'majutsushi/tagbar'
-Plugin 'mtscout6/vim-tagbar-css'
-Plugin 'marijnh/tern_for_vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'docunext/closetag.vim'
+Plugin 'elzr/vim-json'
+Plugin 'gabrielelana/vim-markdown'
+Plugin 'greplace.vim'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'honza/vim-snippets'
+Plugin 'itchyny/lightline.vim'
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'lilydjwg/colorizer'
+Plugin 'majutsushi/tagbar'
+Plugin 'marijnh/tern_for_vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'mtscout6/vim-tagbar-css'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'myhere/vim-nodejs-complete'
+Plugin 'nono/jquery.vim'
+Plugin 'othree/html5.vim'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'pangloss/vim-javascript'
-Plugin 'myhere/vim-nodejs-complete'
-Plugin 'gabrielelana/vim-markdown'
-Plugin 'nono/jquery.vim'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'elzr/vim-json'
-Plugin 'sirver/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'scrooloose/nerdcommenter'
 Plugin 'psf/black'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic.git'
+Plugin 'sirver/ultisnips'
 
 "Plugin 'Valloric/YouCompleteMe'
 
@@ -39,6 +42,7 @@ Plugin 'psf/black'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" --- general settings ---
 " display filename and path in window title
 set title
 
@@ -47,13 +51,8 @@ set hidden
 
 syntax enable
 
-let g:solarized_termtrans = 1
-set background=dark
-"colorscheme koehler
-colorscheme solarized
 syntax on
 
-" taken from debian.vim
 set nocompatible
 set backspace=indent,eol,start
 
@@ -77,11 +76,31 @@ set showmatch
 
 " always display status line
 set laststatus=2
+set ruler
+
+" show partial command in status line
+set showcmd
+
+" display possible choices when tab completing
+set wildmenu
+
+set noet
+set nowrap
+set linebreak
+set modeline
+set number
+
+hi clear SignColumn
+
+" stop vim making backups for crontab
+autocmd filetype crontab setlocal nobackup nowritebackup
+
+" --- Plugin specific settings ---
 
 set omnifunc=syntaxcomplete#Complete
-" highlight current line
-" set cursorline
-let g:tagbar_ctags_bin='/usr/local/bin/ctags'  " Proper Ctags locations
+
+let g:tagbar_ctags_bin='/usr/bin/ctags'  " Proper Ctags locations
+"let g:tagbar_ctags_bin='/usr/local/bin/ctags'  " Proper Ctags locations
 "let g:tlist_ctags_cmd='/usr/local/bin/ctags'  " Proper Ctags locations
 
 " emulate default status line; add git branch info
@@ -103,12 +122,6 @@ if !&diff
 	let g:syntastic_javascript_checkers = ['jscs', 'jshint']
 	set statusline=%#warningmsg#%{SyntasticStatuslineFlag()}%*%t[%{strlen(&fenc)?&fenc:'none'}%{&ff}],%h%m%r%y%=%c,%l/%L\ %P
 endif
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-" stop vim making backups for crontab
-autocmd filetype crontab setlocal nobackup nowritebackup
 
 " emmet settings
 let g:user_emmet_install_global = 0
@@ -128,19 +141,9 @@ let g:UltiSnipsEditSplit="vertical"
 " autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | endif
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-set ruler
-
-" show partial command in status line
-set showcmd
-
-" display possible choices when tab completing
-set wildmenu
-
-set noet
-set nowrap
-set linebreak
-set modeline
-set number
+let g:solarized_termtrans = 1
+set background=dark
+colorscheme solarized
 
 " hide toolbars, tearoff menu items and don't fork
 set guioptions-=T
