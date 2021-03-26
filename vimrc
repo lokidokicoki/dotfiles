@@ -30,7 +30,8 @@ Plugin 'nono/jquery.vim'
 Plugin 'othree/html5.vim'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'pangloss/vim-javascript'
-Plugin 'psf/black'
+" Plugin 'psf/black'
+Plugin 'pylint.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic.git'
@@ -89,6 +90,7 @@ set nowrap
 set linebreak
 set modeline
 set number
+set vb
 
 hi clear SignColumn
 
@@ -176,13 +178,13 @@ endif
 au FileType python set
 	\ shiftwidth=4
 	\ tabstop=4
-	\  softtabstop=4
-	\  autoindent
-	\  expandtab
-	\  textwidth=79
-	\  fileformat=unix
+	\ softtabstop=4
+	\ noexpandtab
+	\ autoindent
+	\ textwidth=79
+	\ fileformat=unix
 
-autocmd BufWritePre *.py execute ':Black'
+" autocmd BufWritePre *.py execute ':Black'
 
 
 autocmd filetypedetect BufNewFile,BufRead COMMIT_EDITMSG set ft=gitcommit
@@ -255,9 +257,9 @@ endif
 au BufRead,BufNewFile *.md set ft=markdown
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
-au BufNewFile,BufRead .bashrc*,bashrc,bash.bashrc,.bash_profile*,bash_profile,bash_logout,.bash_aliases,bash_aliases,.bash_logout*,*.bash,*.ebuild call SetFileTypeSH("bash")
-au BufNewFile,BufRead *jshintrc,*jscsrc call SetFileTypeSH("json")
-au BufNewFile,BufRead *gitconfig call SetFileTypeSH("gitconfig")
+au BufNewFile,BufRead .bashrc*,bashrc,bash.bashrc,.bash_profile*,bash_profile,bash_logout,.bash_aliases,bash_aliases,.bash_logout*,*.bash,*.ebuild call dist#ft#SetFileTypeSH("bash")
+au BufNewFile,BufRead *jshintrc,*jscsrc call dist#ft#SetFileTypeSH("json")
+au BufNewFile,BufRead *gitconfig call dist#ft#SetFileTypeSH("gitconfig")
 
 if filereadable('.jshintrc')
   let g:syntastic_javascript_jshint_args = '--config .jshintrc'
