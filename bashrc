@@ -157,3 +157,5 @@ export PATH=$PATH:$HOME/.local/bin
 export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/.node/bin:$PATH
 export PATH=~/.npm-global/bin:$PATH
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
