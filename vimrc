@@ -30,7 +30,7 @@ Plugin 'nono/jquery.vim'
 Plugin 'othree/html5.vim'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'pangloss/vim-javascript'
-" Plugin 'psf/black'
+Plugin 'psf/black'
 Plugin 'pylint.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
@@ -179,12 +179,18 @@ au FileType python set
 	\ shiftwidth=4
 	\ tabstop=4
 	\ softtabstop=4
-	\ noexpandtab
 	\ autoindent
 	\ textwidth=79
 	\ fileformat=unix
 
-" autocmd BufWritePre *.py execute ':Black'
+if hostname() == "raptor"
+	au FileType python set  noexpandtab
+elseif hostname() == "penguin"
+	au FileType python set  expandtab
+	autocmd BufWritePre *.py execute ':Black'
+endif
+
+
 
 
 autocmd filetypedetect BufNewFile,BufRead COMMIT_EDITMSG set ft=gitcommit
