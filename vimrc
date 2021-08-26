@@ -8,8 +8,15 @@ Plugin 'gmarik/Vundle.vim'
 
 " plugins for Vundle to manage
 
+" nerdtree
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'preservim/nerdcommenter'
+Plugin 'preservim/nerdtree'
+
+" custom color schemes
+Plugin 'joshdick/onedark.vim'
+
+Plugin 'vim-syntastic/syntastic.git'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'docunext/closetag.vim'
 Plugin 'elzr/vim-json'
@@ -20,8 +27,9 @@ Plugin 'honza/vim-snippets'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'lilydjwg/colorizer'
-Plugin 'majutsushi/tagbar'
+Plugin 'preservim/tagbar'
 Plugin 'marijnh/tern_for_vim'
+Plugin 'editorconfig/editorconfig-vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'mtscout6/vim-tagbar-css'
 Plugin 'mustache/vim-mustache-handlebars'
@@ -32,12 +40,10 @@ Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'pangloss/vim-javascript'
 " Plugin 'psf/black'
 Plugin 'pylint.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic.git'
+Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'sirver/ultisnips'
-
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -91,6 +97,7 @@ set linebreak
 set modeline
 set number
 set vb
+set lcs+=space:·
 
 hi clear SignColumn
 
@@ -125,6 +132,9 @@ if !&diff
 	set statusline=%#warningmsg#%{SyntasticStatuslineFlag()}%*%t[%{strlen(&fenc)?&fenc:'none'}%{&ff}],%h%m%r%y%=%c,%l/%L\ %P
 endif
 
+" pep8 plugin setting
+let g:pymode_indent = 0
+
 " emmet settings
 let g:user_emmet_install_global = 0
 let g:user_emmet_expandabbr_key = '<tab>'
@@ -140,12 +150,12 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 " NERDtree settings
-" autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | endif
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-let g:solarized_termtrans = 1
+"let g:solarized_termtrans = 1
 set background=dark
-colorscheme solarized
+colorscheme onedark
 
 " hide toolbars, tearoff menu items and don't fork
 set guioptions-=T
@@ -168,7 +178,7 @@ setlocal spell
 set nospell
 autocmd FileType debchangelog setlocal expandtab
 
-" don't use tabs in python files
+" don't use tabs in JavaScript files
 autocmd FileType javascript setlocal expandtab
 
 if filereadable ("~/.vim/python.vim")
@@ -183,9 +193,10 @@ au FileType python set
 	\ autoindent
 	\ textwidth=79
 	\ fileformat=unix
+	\ encoding=utf8
 
 " autocmd BufWritePre *.py execute ':Black'
-
+au BufRead,BufNewFile *.py, *.pyw, *.c, *.h match BadWhiteSpace /\s\+$/
 
 autocmd filetypedetect BufNewFile,BufRead COMMIT_EDITMSG set ft=gitcommit
 
@@ -268,3 +279,6 @@ else
 endif
 
 let g:mustache_abbreviations = 1
+
+com! FormatJSON %!python -m json.tool
+
