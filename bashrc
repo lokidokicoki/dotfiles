@@ -13,8 +13,9 @@ shopt -s cdspell
 shopt -s histverify
 shopt -s no_empty_cmd_completion
 
-export GREP_OPTIONS='--color=auto'
 
+alias grep="/usr/bin/grep $GREP_OPTIONS"
+unset GREP_OPTIONS
 export EDITOR=vim
 
 if test -n "$DISPLAY"
@@ -48,6 +49,7 @@ elif test -f /usr/local/git/contrib/completion/git-completion.bash; then
 	source /usr/local/git/contrib/completion/git-prompt.sh
 fi
 source ~/.git-prompt.sh
+source ~/.git-completion.bash
 
 
 # best prompt ever!
@@ -130,11 +132,13 @@ function batchfg {
 
 #test -r /etc/bash_completion && source /etc/bash_completion
 
-case $- in
-*i*)
+if [ -f "$HOME/.bash_aliases" ]; then
 	source ~/.bash_aliases
-	;;
-esac
+fi
+
+if [ -f "$HOME/.machine_aliases" ]; then
+	source "$HOME/.machine_aliases"
+fi
 
 
 command -v gvfs-open &>/dev/null && alias open=gvfs-open
@@ -145,7 +149,6 @@ if test -z "$CLICOLOR"; then
 fi
 
 # stuff to tell the user....
-fortune
 export PATH=~/bin:$PATH
 
 # export NVM_DIR="$HOME/.nvm"
@@ -157,3 +160,27 @@ export PATH=$PATH:$HOME/.local/bin
 export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/.node/bin:$PATH
 export PATH=~/.npm-global/bin:$PATH
+
+
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+
+# kick ssh-agent and load key
+# from https://unix.stackexchange.com/a/217223
+if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+  eval `ssh-agent`
+  ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+fi
+export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+ssh-add -l > /dev/null || ssh-add
+
+# say hello Riff!
+fortune
+
+if [ -f "$HOME/.machinerc" ]; then
+    echo "run machine rc"
+    source "$HOME/.machinerc"
+fi
+
