@@ -5,14 +5,14 @@ HERE=$(pwd)
 echo $HOME
 echo 'Setup dotfiles'
 
-FILES=('profile' 'bash_aliases' 'bashrc' 'git-prompt.sh' 'gitconfig' 'vimrc' 'inputrc')
+FILES_TO_LINK=('profile' 'bash_aliases' 'bashrc' 'git-prompt.sh' 'vimrc' 'inputrc')
 
-ELEMENTS=${#FILES[@]}
+ELEMENTS=${#FILES_TO_LINK[@]}
 
 echo "array count $ELEMENTS"
 
 for (( i=0;i<$ELEMENTS;i++)); do
-  FILE=${FILES[${i}]}
+  FILE=${FILES_TO_LINK[${i}]}
   echo "current file: $HOME/$FILE"
   if [ ! -h $HOME/$FILE ]; then
     echo "no link for $FILE"
@@ -24,11 +24,23 @@ for (( i=0;i<$ELEMENTS;i++)); do
     echo "link exists for file $FILE"
   fi
 done
-# ln -s $HERE/bashrc ~/.bashrc
-# ln -s $HERE/bash_aliases ~/.bash_aliases
-# ln -s $HERE/profile ~/.profile
-# ln -s $HERE/vimrc ~/.vimrc
-# ln -s $HERE/gitconfig ~/.gitconfig
-# ln -s $HERE/git-prompt.sh ~/.git-prompt.sh
-# ln -s $HERE/npmrc ~/.npmrc
+
+
+TEMPLATES_TO_COPY=('gitconfig')
+
+ELEMENTS=${#TEMPLATES_TO_COPY[@]}
+
+echo "template array count $ELEMENTS"
+
+for (( i=0;i<$ELEMENTS;i++)); do
+  FILE=${TEMPLATES_TO_COPY[${i}]}
+  echo "current file: $HOME/.$FILE"
+  if [ ! -f "$HOME/.$FILE" ]; then
+    mv "$HOME/.$FILE" "$HOME/.$FILE-old"
+    cp "$HERE/$FILE" "$HOME/.$FILE"
+  else
+	  echo 'target exists'
+  fi
+done
+
 
