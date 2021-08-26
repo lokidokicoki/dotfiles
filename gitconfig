@@ -1,9 +1,6 @@
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
-[user]
-	name = lokidokicoki
-	email = lokidokicoki@gmail.com
 [core]
 	editor = vim
 	compression = 0
@@ -31,3 +28,5 @@
 	prompt = false
 [pull]
 	ff = only
+[cola]
+	spellcheck = false
