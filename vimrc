@@ -8,36 +8,41 @@ Plugin 'gmarik/Vundle.vim'
 
 " plugins for Vundle to manage
 
+" nerdtree
+Plugin 'preservim/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'docunext/closetag.vim'
-Plugin 'elzr/vim-json'
-Plugin 'gabrielelana/vim-markdown'
-Plugin 'greplace.vim'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'honza/vim-snippets'
-Plugin 'itchyny/lightline.vim'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'lilydjwg/colorizer'
-Plugin 'majutsushi/tagbar'
-Plugin 'marijnh/tern_for_vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'mtscout6/vim-tagbar-css'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'myhere/vim-nodejs-complete'
-Plugin 'nono/jquery.vim'
-Plugin 'othree/html5.vim'
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'pangloss/vim-javascript'
+Plugin 'preservim/nerdcommenter'
+
+" python
 Plugin 'psf/black'
 Plugin 'pylint.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic.git'
-Plugin 'sirver/ultisnips'
+Plugin 'vim-scripts/indentpython.vim'
 
-"Plugin 'Valloric/YouCompleteMe'
+" web
+"Plugin 'elzr/vim-json'
+"Plugin 'gabrielelana/vim-markdown'
+"Plugin 'hail2u/vim-css3-syntax'
+"Plugin 'jelera/vim-javascript-syntax'
+"Plugin 'mattn/emmet-vim'
+"Plugin 'mtscout6/vim-tagbar-css'
+"Plugin 'mustache/vim-mustache-handlebars'
+"Plugin 'myhere/vim-nodejs-complete'
+"Plugin 'nono/jquery.vim'
+"Plugin 'othree/html5.vim'
+"Plugin 'othree/javascript-libraries-syntax.vim'
+"Plugin 'pangloss/vim-javascript'
+"Plugin 'lilydjwg/colorizer'
+
+"
+Plugin 'vim-syntastic/syntastic'
+Plugin 'joshdick/onedark.vim'
+Plugin 'airblade/vim-gitgutter'
+"Plugin 'honza/vim-snippets'
+Plugin 'itchyny/lightline.vim'
+Plugin 'preservim/tagbar'
+"Plugin 'marijnh/tern_for_vim'
+Plugin 'sirver/ultisnips'
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -143,9 +148,8 @@ let g:UltiSnipsEditSplit="vertical"
 " autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | endif
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-let g:solarized_termtrans = 1
 set background=dark
-colorscheme solarized
+colorscheme onedark
 
 " hide toolbars, tearoff menu items and don't fork
 set guioptions-=T
@@ -168,36 +172,39 @@ setlocal spell
 set nospell
 autocmd FileType debchangelog setlocal expandtab
 
-" don't use tabs in python files
 autocmd FileType javascript setlocal expandtab
 
+" Start python files
+" don't use tabs in python files
 if filereadable ("~/.vim/python.vim")
     autocmd FileType python source ~/.vim/python.vim
 endif
 
 au FileType python set
-	\ shiftwidth=4
 	\ tabstop=4
 	\ softtabstop=4
-	\ autoindent
+	\ shiftwidth=4
 	\ textwidth=79
+	\ expandtab
+	\ autoindent
 	\ fileformat=unix
+	\ encoding=utf-8
 
 if hostname() == "raptor"
 	au FileType python set  noexpandtab
 elseif hostname() == "penguin"
-	au FileType python set  expandtab
 	autocmd BufWritePre *.py execute ':Black'
 endif
+
+au BufRead,BufNewFile *.py, *.pyw, *.c, *.h match BadWhiteSpace /\s\+$/
+
+" End python files
 
 
 
 
 autocmd filetypedetect BufNewFile,BufRead COMMIT_EDITMSG set ft=gitcommit
 
-" actionscript, not atlas
-autocmd! filetypedetect BufNewFile,BufRead *.as
-autocmd  filetypedetect BufNewFile,BufRead *.as set ft=actionscript
 au! BufRead,BufNewFile *.json set filetype=json
 
 set pastetoggle=<F10>
