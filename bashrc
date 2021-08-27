@@ -179,8 +179,8 @@ ssh-add -l > /dev/null || ssh-add
 # say hello Riff!
 fortune
 
+# last thing, run machine specific config
 if [ -f "$HOME/.machinerc" ]; then
-    echo "run machine rc"
     source "$HOME/.machinerc"
 fi
 
