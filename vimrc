@@ -173,6 +173,7 @@ endif
 set display+=lastline
 
 set spelllang=en_gb
+set encoding=utf-8
 
 setlocal spell
 set nospell
@@ -193,7 +194,6 @@ au FileType python set
 	\ autoindent
 	\ textwidth=79
 	\ fileformat=unix
-	\ encoding=utf8
 
 " autocmd BufWritePre *.py execute ':Black'
 au BufRead,BufNewFile *.py, *.pyw, *.c, *.h match BadWhiteSpace /\s\+$/
@@ -281,4 +281,10 @@ endif
 let g:mustache_abbreviations = 1
 
 com! FormatJSON %!python -m json.tool
+
+" load machine-specific vimrc
+let s:host_vimrc = $HOME . '/.' . hostname() . '.vimrc'
+if filereadable(s:host_vimrc)
+  execute 'source ' . s:host_vimrc
+endif
 
