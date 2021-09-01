@@ -50,8 +50,6 @@ elif test -f /usr/local/git/contrib/completion/git-completion.bash; then
 fi
 
 source ~/.git-prompt.sh
-# source ~/.git-completion.bash
-
 
 # best prompt ever!
 #
