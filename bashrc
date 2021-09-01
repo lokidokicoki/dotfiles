@@ -48,8 +48,9 @@ elif test -f /usr/local/git/contrib/completion/git-completion.bash; then
 	source /usr/local/git/contrib/completion/git-completion.bash
 	source /usr/local/git/contrib/completion/git-prompt.sh
 fi
+
 source ~/.git-prompt.sh
-source ~/.git-completion.bash
+# source ~/.git-completion.bash
 
 
 # best prompt ever!
@@ -162,7 +163,6 @@ export PATH=$HOME/.node/bin:$PATH
 export PATH=~/.npm-global/bin:$PATH
 
 
-export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 

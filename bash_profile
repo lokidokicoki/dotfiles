@@ -28,6 +28,10 @@ esac
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # Source .bashrc if this is an interactive shell
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
 case $- in
 *i*)
 	source ~/.bashrc
