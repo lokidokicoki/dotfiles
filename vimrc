@@ -31,6 +31,7 @@ Plugin 'preservim/tagbar'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'mattn/emmet-vim'
+Plugin 'szw/vim-tags'
 Plugin 'mtscout6/vim-tagbar-css'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'myhere/vim-nodejs-complete'
@@ -38,9 +39,9 @@ Plugin 'nono/jquery.vim'
 Plugin 'othree/html5.vim'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'pangloss/vim-javascript'
-Plugin 'psf/black'
-Plugin 'pylint.vim'
+Plugin 'dense-analysis/ale'
 Plugin 'Vimjas/vim-python-pep8-indent'
+Plugin 'sansyrox/vim-python-virtualenv'
 Plugin 'sirver/ultisnips'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'Valloric/YouCompleteMe'
@@ -63,10 +64,11 @@ syntax on
 set nocompatible
 set backspace=indent,eol,start
 
-set directory=/var/tmp//
+set directory=/var/tmp/
 
 " enable mouse in all modes
 set mouse=a
+
 " make mouse behave like mac/windows/gnome
 set mousemodel=popup_setpos
 
@@ -75,14 +77,14 @@ set splitright
 
 " hilight search results
 set hlsearch
-" incremental search
-" set incsearch
 
 " show patching parentheses
 set showmatch
 
 " always display status line
 set laststatus=2
+
+" show ruler at max textwidth
 set ruler
 
 " show partial command in status line
@@ -91,20 +93,87 @@ set showcmd
 " display possible choices when tab completing
 set wildmenu
 
-set noet
+" do not turn tabs into spaces
+set noexpandtab
+
+" do not wrap long lines
 set nowrap
+
+" break long lines
 set linebreak
+
+" 
 set modeline
+
+" show line numbers
 set number
-set vb
-set lcs+=space:·
+
+" use the visualbell
+set visualbell
 
 hi clear SignColumn
 
-" stop vim making backups for crontab
-autocmd filetype crontab setlocal nobackup nowritebackup
+" set color sheme
+set background=dark
+colorscheme onedark
+
+set display+=lastline
+
+set spelllang=en_gb
+
+setlocal spell
+set nospell
+set encoding=utf-8
+set pastetoggle=<F10>
+
+" disable syntax highlighting in diff mode
+if &diff
+	"set columns=151
+	"map :q :qa
+	syn off
+endif
+
+" automatically load the GUI when run under X11
+if has('gui') && $DISPLAY != ''
+	gui
+endif
+
+if &term =~ "screen"
+	set ttymouse=xterm2
+endif
+
+" hide toolbars, tearoff menu items and don't fork
+set guioptions-=T
+set guioptions-=t
+set guioptions+=f
+
+if has ("win32")
+    set guifont=DejaVu_Sans_Mono:h9
+elseif has ("mac")
+    set guifont=Source\ Code\ Pro:h12
+else
+    set guifont=Monospace\ 10
+endif
+
+if has("gui_running")
+	set lcs+=space:·
+endif
+
+
+
+"set listchars=eol:␤,tab:␉\ ,trail:␠,extends:>,precedes:<,nbsp:␠
+"set list
+nnoremap <silent> <F2> :bprevious<CR>
+nnoremap <silent> <F3> :bnext<CR>
+
+let notabs = 1
+nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
+
 
 " --- Plugin specific settings ---
+
+" vim-python-virtualenv tweaks
+let g:python3_host_prog='/usr/bin/python3'
 
 set omnifunc=syntaxcomplete#Complete
 
@@ -150,53 +219,22 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 " NERDtree settings
+let NERDTreeShowHidden=1
 autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-"let g:solarized_termtrans = 1
-set background=dark
-colorscheme onedark
 
-" hide toolbars, tearoff menu items and don't fork
-set guioptions-=T
-set guioptions-=t
-set guioptions+=f
+" =================
+" Filetype settings
+" =================
 
-if has ("win32")
-    set guifont=DejaVu_Sans_Mono:h9
-elseif has ("mac")
-    set guifont=Source\ Code\ Pro:h12
-else
-    set guifont=Monospace\ 10
-endif
+" stop vim making backups for crontab
+autocmd filetype crontab setlocal nobackup nowritebackup
 
-set display+=lastline
-
-set spelllang=en_gb
-set encoding=utf-8
-
-setlocal spell
-set nospell
 autocmd FileType debchangelog setlocal expandtab
 
 " don't use tabs in JavaScript files
 autocmd FileType javascript setlocal expandtab
-
-if filereadable ("~/.vim/python.vim")
-    autocmd FileType python source ~/.vim/python.vim
-endif
-
-au FileType python set
-	\ shiftwidth=4
-	\ tabstop=4
-	\ softtabstop=4
-	\ noexpandtab
-	\ autoindent
-	\ textwidth=79
-	\ fileformat=unix
-
-" autocmd BufWritePre *.py execute ':Black'
-au BufRead,BufNewFile *.py, *.pyw, *.c, *.h match BadWhiteSpace /\s\+$/
 
 autocmd filetypedetect BufNewFile,BufRead COMMIT_EDITMSG set ft=gitcommit
 
@@ -205,58 +243,10 @@ autocmd! filetypedetect BufNewFile,BufRead *.as
 autocmd  filetypedetect BufNewFile,BufRead *.as set ft=actionscript
 au! BufRead,BufNewFile *.json set filetype=json
 
-set pastetoggle=<F10>
 
-" Make navigation behave more sensible when 'wrap' is set.
-" Taken from <http://www.vim.org/tips/tip.php?tip_id=38>
-"map <up>   gk
-"map <down> gj
-"map <home> g<home>
-"map <end>  g<end>
-"imap <up>   <C-o>gk
-"imap <down> <C-o>gj
-"imap <home> <C-o>g<home>
-"imap <end>  <C-o>g<end>
-
-filetype indent on
-
-" disable syntax highlighting in diff mode
-if &diff
-	"set columns=151
-	"map :q :qa
-	syn off
-endif
-
-" automatically load the GUI when run under X11
-if has('gui') && $DISPLAY != ''
-	gui
-endif
-
-"set listchars=eol:␤,tab:␉\ ,trail:␠,extends:>,precedes:<,nbsp:␠
-"set list
-
-"autocmd BufWritePost,FileWritePost /home/sam/src/occ/data/occ.py silent !ln -sf <afile>:p ~/.openoffice.org2/user/Scripts/python/occ.py
 au BufWritePost,FileWritePost *.scss silent !sass --update <afile>:p:h/styles.scss
 
-if &term =~ "screen"
-	set ttymouse=xterm2
-endif
-
-" highlight TrailWhitespace ctermbg=red guibg=#ffdecd
-" match TrailWhitespace /\s\+$\| \+\ze\t\|[^\t]\zs\t\+/
-"autocmd Syntax * syn match TrailWhitespace /\s\+$\| \+\ze\t/
-"
-nnoremap <silent> <F2> :tabprev<CR>
-nnoremap <silent> <F3> :tebnext<CR>
-
-let notabs = 1
-nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
-
-nmap <F8> :TagbarToggle<CR>
-nmap <F5> :Texplore<CR>
-nmap <F10> :Errors<CR>
-
-" autoopen tag bar for lua
+" autoopen tag bar for selected languages
 if has("gui_running")
 	if !&diff
     	autocmd BufEnter *.lua nested TagbarOpen
@@ -272,19 +262,7 @@ au BufNewFile,BufRead .bashrc*,bashrc,bash.bashrc,.bash_profile*,bash_profile,ba
 au BufNewFile,BufRead *jshintrc,*jscsrc call dist#ft#SetFileTypeSH("json")
 au BufNewFile,BufRead *gitconfig call dist#ft#SetFileTypeSH("gitconfig")
 
-if filereadable('.jshintrc')
-  let g:syntastic_javascript_jshint_args = '--config .jshintrc'
-else
-  let g:syntastic_javascript_jshint_args = '--config ~/.jshintrc'
-endif
-
 let g:mustache_abbreviations = 1
 
-com! FormatJSON %!python -m json.tool
-
-" load machine-specific vimrc
-let s:host_vimrc = $HOME . '/.' . hostname() . '.vimrc'
-if filereadable(s:host_vimrc)
-  execute 'source ' . s:host_vimrc
-endif
+com! FormatJSON %!python3 -m json.tool
 
