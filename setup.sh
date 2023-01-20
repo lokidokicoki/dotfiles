@@ -45,7 +45,6 @@ done
 
 echo "create symlink for vim subdirs"
 
-ln -s ~/dotfiles/vim/init ~/.vim/init
-ln -s ~/dotfiles/vim/after ~/.vim/after
+ln -s $HERE/vim $HOME/.vim
 
 
