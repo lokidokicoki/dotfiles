@@ -161,10 +161,6 @@ export PATH=$HOME/.node/bin:$PATH
 export PATH=~/.npm-global/bin:$PATH
 
 
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-
 # kick ssh-agent and load key
 # from https://unix.stackexchange.com/a/217223
 if [ ! -S ~/.ssh/ssh_auth_sock ]; then
