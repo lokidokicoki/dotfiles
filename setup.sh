@@ -39,8 +39,12 @@ for (( i=0;i<$ELEMENTS;i++)); do
     mv "$HOME/.$FILE" "$HOME/.$FILE-old"
     cp "$HERE/$FILE" "$HOME/.$FILE"
   else
-	  echo 'target exists'
+	echo "target $FILE exists"
   fi
 done
+
+echo "create symlink for vim subdirs"
+
+ln -s $HERE/vim $HOME/.vim
 
 
