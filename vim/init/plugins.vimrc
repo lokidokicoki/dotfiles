@@ -53,3 +53,5 @@ autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 let g:mustache_abbreviations = 1
+let g:gutentags_cache_dir = $HOME .'/.cache/gutentags'
+

@@ -41,6 +41,8 @@ command -v dircolors >/dev/null && eval "$(dircolors -b)"
 
 if test -f /etc/bash_completion.d/git; then
 	source /etc/bash_completion.d/git
+elif test -f ~/.git-completion.bash; then
+	source ~/.git-completion.bash
 elif test -f /opt/local/share/doc/git-core/contrib/completion/git-completion.bash; then
 	source /opt/local/share/doc/git-core/contrib/completion/git-completion.bash
 elif test -f /usr/local/git/contrib/completion/git-completion.bash; then
