@@ -180,3 +180,4 @@ if [ -f "$HOME/.machinerc" ]; then
     source "$HOME/.machinerc"
 fi
 
+. "$HOME/.cargo/env"

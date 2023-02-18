@@ -46,6 +46,7 @@ Plugin 'sansyrox/vim-python-virtualenv'
 Plugin 'sirver/ultisnips'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'rust-lang/rust.vim'
 Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
