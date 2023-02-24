@@ -1,13 +1,12 @@
 " --- general settings ---
+syntax enable
+syntax on
+
 " display filename and path in window title
 set title
 
 " allow for edited buffers that can be invisible
 set hidden
-
-syntax enable
-
-syntax on
 
 set nocompatible
 set backspace=indent,eol,start
@@ -68,6 +67,10 @@ hi clear SignColumn
 set background=dark
 colorscheme onedark
 
+" define list characters
+set listchars=tab:>-,trail:_,extends:>,precedes:<,nbsp:~,space:.
+set list
+
 set display+=lastline
 
 set spelllang=en_gb
@@ -103,10 +106,8 @@ if has ("win32")
 elseif has ("mac")
     set guifont=Source\ Code\ Pro:h12
 else
-    set guifont=Monospace\ 10
+    set guifont=Monospace\ 12
 endif
-
-set lcs+=space:·
 
 
 " =================
@@ -127,24 +128,11 @@ autocmd filetypedetect BufNewFile,BufRead COMMIT_EDITMSG set ft=gitcommit
 autocmd! filetypedetect BufNewFile,BufRead *.as
 autocmd  filetypedetect BufNewFile,BufRead *.as set ft=actionscript
 au! BufRead,BufNewFile *.json set filetype=json
-
-
 au BufWritePost,FileWritePost *.scss silent !sass --update <afile>:p:h/styles.scss
-
-" autoopen tag bar for selected languages
-if !&diff
-	autocmd BufEnter *.lua nested TagbarOpen
-	autocmd BufEnter *.py nested TagbarOpen
-	autocmd BufEnter *.js nested TagbarOpen
-end
-
 au BufRead,BufNewFile *.md set ft=markdown
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
-
 au BufNewFile,BufRead .bashrc*,bashrc,bash.bashrc,.bash_profile*,bash_profile,bash_logout,.bash_aliases,bash_aliases,.bash_logout*,*.bash,*.ebuild call dist#ft#SetFileTypeSH("bash")
 au BufNewFile,BufRead *jshintrc,*jscsrc call dist#ft#SetFileTypeSH("json")
 au BufNewFile,BufRead *gitconfig call dist#ft#SetFileTypeSH("gitconfig")
 
-
 com! FormatJSON %!python3 -m json.tool
-
