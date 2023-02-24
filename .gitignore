@@ -1,2 +1,4 @@
 *.orig
 bundle
+vim/plugged
+vim/autoload
