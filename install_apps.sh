@@ -4,7 +4,7 @@ echo "Install apps"
 
 sudo apt update
 
-sudo apt install fortune-mod vim-gtk3 vim-nox vim-doc python3-dev python-is-python3 git build-essential cmake golang nodejs npm mono-complete openjdk-17-jdk openjdk-17-jre openssh-server
+sudo apt install fortune-mod vim-gtk3 vim-nox vim-doc python3-dev python-is-python3 git build-essential cmake golang nodejs npm mono-complete openjdk-17-jdk openjdk-17-jre openssh-server fonts-powerline
 
 curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
 
