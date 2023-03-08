@@ -118,6 +118,16 @@ function block {
 	sudo iptables -I OUTPUT -d "$1" -j DROP
 }
 
+function app_release {
+	git fetch origin master
+	git checkout -B release origin/master
+	poetry update && poetry export -f requirements.txt --without-hashes -o requirements.txt
+	git add poetry.lock requirements.txt && git commit -m"fix: update lock and requirements files"
+	VERSION=$(cz bump --changelog --annotated-tag)
+	git push -o merge_request.create -o merge_request.remove_source_branch --force --follow-tags --set-upstream origin release
+	echo "New $VERSION"
+}
+
 if [ -f "$HOME/.bash_aliases" ]; then
 	source ~/.bash_aliases
 fi
