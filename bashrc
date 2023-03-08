@@ -118,21 +118,6 @@ function block {
 	sudo iptables -I OUTPUT -d "$1" -j DROP
 }
 
-function batchfg {
-	foo="$(awk '{print $1}' /proc/loadavg) < 1.5"
-	while test "$(bc <<< "$foo")" = '0'; do
-		foo="$(awk '{print $1}' /proc/loadavg) < 1.5"
-		sleep 5
-	done
-	"$@"
-}
-
-#function info {
-#	gnome-open "http://localhost/cgi-bin/info2www?($1)$2"
-#}
-
-#test -r /etc/bash_completion && source /etc/bash_completion
-
 if [ -f "$HOME/.bash_aliases" ]; then
 	source ~/.bash_aliases
 fi
