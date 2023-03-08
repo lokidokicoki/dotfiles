@@ -1,9 +1,0 @@
-#!/bin/bash
-
-git fetch origin master
-git checkout -B release origin/master
-poetry update && poetry export -f requirements.txt --without-hashes -o requirements.txt
-git add poetry.lock requirements.txt && git commit -m"fix: update lock and requirements files"
-VERSION=$(cz bump --changelog --annotated-log)
-git push -o merge_request.create -o merge_request.remove_source_branch --force --follow-tags --set-upstream origin release
-echo "New $VERSION"
