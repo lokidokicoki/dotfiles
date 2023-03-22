@@ -8,15 +8,15 @@ sudo apt install fortune-mod vim-gtk3 vim-nox vim-doc python3-dev python-is-pyth
 
 curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
 
-if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]; then
+if [ ! -d "$HOME/.vim/autoload/plug.vim" ]; then
 	echo "Install Vundle and vim plugins"
-	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-	vim.nox  +PluginInstall +qall
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs http://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	vim.nox  +PlugInstall 
 fi
 
 echo "Build YCM"
 
-cd $HOME/.vim/bundle/YouCompleteMe
+cd $HOME/.vim/plugged/youcompleteme
 python3 install.py --all
 
 echo "Setup SSH server"
