@@ -6,4 +6,4 @@ let notabs = 1
 nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
 
 let loclistopen = 1
-noremap <silent> <F5> :ToggleLocList
+noremap <silent> <F5> :let loclistopen=!loclistopen<Bar>:if loclistopen<Bar>:lopen<Bar>:else<Bar>:lclose<Bar>:endif<CR>

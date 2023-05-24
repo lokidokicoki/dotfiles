@@ -2,3 +2,5 @@
 bundle
 vim/plugged
 vim/autoload
+vim/spell
+vim/vim

@@ -34,6 +34,7 @@ Plug 'sansyrox/vim-python-virtualenv'
 Plug 'sirver/ultisnips'
 Plug 'vim-scripts/greplace.vim'
 Plug 'ycm-core/youcompleteme'
+Plug 'jlanzarotta/bufexplorer'
 
 " languages
 Plug 'editorconfig/editorconfig-vim'

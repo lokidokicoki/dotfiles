@@ -6,7 +6,7 @@
 # are only using scp. Therefore check that we have a terminal before processing
 # this file
 if test -n "$SSH_CONNECTION"; then
-    tty -s || return
+	tty -s || return
 fi
 
 shopt -s cdspell
@@ -72,7 +72,7 @@ function user_colour {
 
 # Git branch in prompt.
 parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
 csi='\033['
@@ -147,9 +147,11 @@ fi
 # stuff to tell the user....
 export PATH=~/bin:$PATH
 
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$HOME/.nvm"
+ [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+ [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+nvm use
 
 export PATH=$PATH:$HOME/.local/bin
 
@@ -161,8 +163,8 @@ export PATH=~/.npm-global/bin:$PATH
 # kick ssh-agent and load key
 # from https://unix.stackexchange.com/a/217223
 if [ ! -S ~/.ssh/ssh_auth_sock ]; then
-  eval `ssh-agent`
-  ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+	eval `ssh-agent`
+	ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
 fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l > /dev/null || ssh-add
@@ -172,7 +174,7 @@ fortune
 
 # last thing, run machine specific config
 if [ -f "$HOME/.machinerc" ]; then
-    source "$HOME/.machinerc"
+	source "$HOME/.machinerc"
 fi
 
 . "$HOME/.cargo/env"

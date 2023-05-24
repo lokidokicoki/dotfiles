@@ -1,0 +1,8 @@
+{
+	"plugins":[
+		"remark-preset-lint-markdown-style-guide",
+		"remark-gfm",
+		"remark-lint-no-heading-indent",
+		"remark-frontmatter"
+	]
+}

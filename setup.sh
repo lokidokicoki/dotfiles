@@ -5,7 +5,7 @@ HERE=$(pwd)
 echo $HOME
 echo 'Setup dotfiles'
 
-FILES_TO_LINK=('profile' 'bash_aliases' 'bashrc' 'git-prompt.sh' 'vimrc' 'inputrc')
+FILES_TO_LINK=('profile' 'bash_aliases' 'bashrc' 'git-prompt.sh' 'vimrc' 'inputrc', 'remarkrc.json')
 
 ELEMENTS=${#FILES_TO_LINK[@]}
 

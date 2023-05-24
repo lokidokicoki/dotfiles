@@ -44,3 +44,4 @@ alias whois='whois -H'
 alias xc='xclip -selection clipboard -in'
 alias xp='xclip -selection clipboard -out'
 alias vi='vim'
+alias jalopy="source /opt/jalo.py/scripts/run_jalopy.sh"

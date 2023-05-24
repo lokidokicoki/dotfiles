@@ -47,7 +47,7 @@ let g:airline#extensions#tabline#enabled = 1	" enable buffer list
 " Vista settings
 " ======================
 if !&diff
-	autocmd BufRead * :Vista
+	autocmd BufRead *.ts,*.py,*.lua,*.css :Vista
 end
 
 " ======================
@@ -61,5 +61,10 @@ let g:ale_fxers = {'*': ['remove_trailing_lines', 'trim_whitespace']}
 " Gutentags settings
 " ======================
 let g:gutentags_cache_dir = $HOME .'/.cache/gutentags'
+let g:gutentags_file_list_command = {
+			\ 'markers': {
+			\ '.git': 'git ls-files',
+				\}
+				\}
 
 let g:mustache_abbreviations = 1
