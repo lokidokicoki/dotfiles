@@ -41,7 +41,7 @@ set showcmd
 set wildmenu
 
 " do not turn tabs into spaces
-set noexpandtab
+set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
