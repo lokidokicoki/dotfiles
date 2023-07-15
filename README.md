@@ -1,10 +1,9 @@
-dotfiles
-========
+# dotfiles
 
 collection of dotfiles
 
+_NB:_ you can provide machine specific overrides to the aliases and rc by creating the following:
 
-*NB:* you can provide machine specific overrides to the aliases and rc by creating the following:
 - `$HOME/.machinerc`
 - `$home/.machine_aliases`
 

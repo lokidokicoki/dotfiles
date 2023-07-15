@@ -53,6 +53,10 @@ fi
 
 source ~/.git-prompt.sh
 
+if test -f $HOME/.bash_completion; then
+    source $HOME/.bash_completion
+fi
+
 # best prompt ever!
 #
 function smile {
