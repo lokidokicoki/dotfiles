@@ -47,7 +47,7 @@ let g:airline#extensions#tabline#enabled = 1	" enable buffer list
 " Vista settings
 " ======================
 if !&diff
-	autocmd BufRead * nested :TagbarToggle
+	autocmd BufRead * nested :TagbarOpen
 end
 
 " ======================
