@@ -1,13 +1,13 @@
-" Python specific settings
+" Typescript specific settings
 setlocal shiftwidth=4
 setlocal tabstop=4
 setlocal softtabstop=4
-setlocal expandtab
+setlocal noexpandtab
 setlocal autoindent
 setlocal fileformat=unix
 setlocal textwidth=120
 
-let python_highlight_all = 1
+" let python_highlight_all = 1
 
 " Use the below highlight group when displaying bad whitespace is desired.
 highlight BadWhitespace ctermbg=red guibg=red
@@ -17,10 +17,6 @@ highlight BadWhitespace ctermbg=red guibg=red
 "au BufRead,BufNewFile *.py, *.pyw, *.c, *.h match BadWhiteSpace /\s\+$/
 
 " configure ALE linters and fixers
-let b:ale_linters = {'python': ['flake8', 'mypy', 'pylint']}
-let b:ale_fixers = {'python': ['isort', 'black']}
-"let b:pymode_lint_options_pep8 = {
-"        \ 'max_line_length': 120,
-"        \ 'ignore': 'W191'
-"    \ }
-let g:pymode_lint_ignore = "W191"
+let b:ale_linters = {'typescript': ['eslint']}
+let b:ale_fixers = {'typescript': ['prettier']}
+let b:ale_fix_on_save = 1

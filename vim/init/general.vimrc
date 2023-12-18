@@ -2,64 +2,47 @@
 syntax enable
 syntax on
 
-" display filename and path in window title
-set title
-
-" allow for edited buffers that can be invisible
-set hidden
+set title " display filename and path in window title
+set hidden " allow for edited buffers that can be invisible
 
 set nocompatible
 set backspace=indent,eol,start
 
 set directory=/var/tmp/
 
-" enable mouse in all modes
-set mouse=a
-
-" make mouse behave like mac/windows/gnome
-set mousemodel=popup_setpos
+set mouse=a " enable mouse in all modes
+set mousemodel=popup_setpos " make mouse behave like mac/windows/gnome
 
 set splitbelow
 set splitright
 
-" hilight search results
-set hlsearch
+set hlsearch		" hilight search results
 
-" show patching parentheses
-set showmatch
+set showmatch		" show patching parentheses
 
-" always display status line
-set laststatus=2
+set laststatus=2	" always display status line
 
-" show ruler at max textwidth
-set ruler
+set ruler " show ruler at max textwidth
 
-" show partial command in status line
-set showcmd
+set showcmd " show partial command in status line
 
-" display possible choices when tab completing
-set wildmenu
+set wildmenu " display possible choices when tab completing
 
 " do not turn tabs into spaces
-set expandtab
-set tabstop=4
+set noexpandtab
 set shiftwidth=4
+set tabstop=4
 set softtabstop=4
 
-" do not wrap long lines
-set nowrap
+set nowrap " do not wrap long lines
 
-" break long lines
-set linebreak
+set linebreak " break long lines
 
-" 
 set modeline
 
-" show line numbers
-set number
+set number " show line numbers
 
-" use the visualbell
-set visualbell
+set visualbell " use the visualbell
 
 hi clear SignColumn
 
@@ -82,17 +65,16 @@ set pastetoggle=<F10>
 
 " disable syntax highlighting in diff mode
 if &diff
-	"set columns=151
-	"map :q :qa
 	syn off
 endif
 
 " automatically load the GUI when run under X11
-if has('gui') && $DISPLAY != ''
+"if has('gui') && $DISPLAY != ''
+if $TMUX_PANE == '' && has('gui') && $DISPLAY != ''
 	gui
 endif
 
-if &term =~ "screen"
+if &term =~ "screen" && !has('nvim')
 	set ttymouse=xterm2
 endif
 
@@ -101,14 +83,14 @@ set guioptions-=T
 set guioptions-=t
 set guioptions+=f
 
+" choose font for gui, doesn't affect console version
 if has ("win32")
-    set guifont=DejaVu_Sans_Mono:h9
+	set guifont=DejaVu_Sans_Mono:h9
 elseif has ("mac")
-    set guifont=Source\ Code\ Pro:h12
+	set guifont=Source\ Code\ Pro:h12
 else
-    set guifont=Monospace\ 12
+	set guifont=Monospace\ 10
 endif
-
 
 " =================
 " Filetype settings
@@ -128,11 +110,16 @@ autocmd filetypedetect BufNewFile,BufRead COMMIT_EDITMSG set ft=gitcommit
 autocmd! filetypedetect BufNewFile,BufRead *.as
 autocmd  filetypedetect BufNewFile,BufRead *.as set ft=actionscript
 au! BufRead,BufNewFile *.json set filetype=json
+
+
 au BufWritePost,FileWritePost *.scss silent !sass --update <afile>:p:h/styles.scss
+
 au BufRead,BufNewFile *.md set ft=markdown
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+
 au BufNewFile,BufRead .bashrc*,bashrc,bash.bashrc,.bash_profile*,bash_profile,bash_logout,.bash_aliases,bash_aliases,.bash_logout*,*.bash,*.ebuild call dist#ft#SetFileTypeSH("bash")
 au BufNewFile,BufRead *jshintrc,*jscsrc call dist#ft#SetFileTypeSH("json")
 au BufNewFile,BufRead *gitconfig call dist#ft#SetFileTypeSH("gitconfig")
+
 
 com! FormatJSON %!python3 -m json.tool
