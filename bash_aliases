@@ -43,5 +43,5 @@ alias wgoat='wget'
 alias whois='whois -H'
 alias xc='xclip -selection clipboard -in'
 alias xp='xclip -selection clipboard -out'
-alias vi='vim'
+alias vi='nvim'
 alias run_jalopy=". /opt/jalopy/scripts/run_jalopy.sh"
