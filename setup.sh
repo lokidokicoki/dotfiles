@@ -5,7 +5,7 @@ HERE=$(pwd)
 echo $HOME
 echo 'Setup dotfiles'
 
-FILES_TO_LINK=('profile' 'bash_aliases' 'bashrc' 'git-prompt.sh' 'vimrc' 'inputrc', 'remarkrc.json')
+FILES_TO_LINK=('profile' 'bash_aliases' 'bashrc' 'git-prompt.sh' 'vimrc' 'inputrc' 'remarkrc.json')
 
 ELEMENTS=${#FILES_TO_LINK[@]}
 
@@ -47,4 +47,4 @@ echo "create symlink for vim subdirs"
 
 ln -s $HERE/vim $HOME/.vim
 
-
+ln -s $HERE/init.vim $HOME/.config/nvim/init.vim

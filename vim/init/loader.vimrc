@@ -33,8 +33,10 @@ Plug 'puremourning/vimspector'
 Plug 'sansyrox/vim-python-virtualenv'
 Plug 'sirver/ultisnips'
 Plug 'vim-scripts/greplace.vim'
-Plug 'ycm-core/youcompleteme'
+" Plug 'ycm-core/youcompleteme'
 Plug 'jlanzarotta/bufexplorer'
+Plug 'neoclide/coc.nvim', {'branch':'release'}
+Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
 
 " languages
 Plug 'editorconfig/editorconfig-vim'
