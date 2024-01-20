@@ -4,7 +4,6 @@ local og = vim.opt_global
 local w = vim.wo
 local b = vim.bo
 
-print('hello from lua')
 --- general settings ---
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -61,14 +60,11 @@ if vim.api.nvim_win_get_option(0, 'diff') then
 end
 
 
---com! FormatJSON %!python3 -m json.tool
---[[
 vim.api.nvim_create_user_command(
 	'FormatJSON',
 	'%!python3 -m json.tool',
 	{}
 )
-]]--
 
 --[[
 -- =================
