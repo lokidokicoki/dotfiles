@@ -5,14 +5,14 @@ HERE=$(pwd)
 echo $HOME
 echo "Setup dotfiles in $HOME"
 
-FILES_TO_LINK=('profile' 'bash_aliases' 'bashrc' 'git-prompt.sh' 'vimrc' 'inputrc' 'tmux.conf' 'remarkrc.json')
+FILES_TO_LINK=('.profile' '.bash_aliases' '.bashrc' '.git-prompt.sh' '.inputrc' '.tmux.conf' '.remarkrc.json' '.gitconfig')
 
 ELEMENTS=${#FILES_TO_LINK[@]}
 
 for (( i=0;i<$ELEMENTS;i++)); do
 	FILE=${FILES_TO_LINK[${i}]}
 	SRC="$HERE/$FILE"
-	DEST="$HOME/.$FILE"
+	DEST="$HOME/$FILE"
 
 	echo "-> current file: $SRC -> $DEST"
 	if [ ! -L "$DEST" ]; then
@@ -23,24 +23,6 @@ for (( i=0;i<$ELEMENTS;i++)); do
 		ln -s "$SRC" "$DEST"
 	else
 		echo "--> link exists for file $SRC, no action required"
-	fi
-done
-
-
-TEMPLATES_TO_COPY=('gitconfig')
-
-ELEMENTS=${#TEMPLATES_TO_COPY[@]}
-
-echo "template array count $ELEMENTS"
-
-for (( i=0;i<$ELEMENTS;i++)); do
-	FILE=${TEMPLATES_TO_COPY[${i}]}
-	echo "current file: $HOME/.$FILE"
-	if [ ! -f "$HOME/.$FILE" ]; then
-		mv "$HOME/.$FILE" "$HOME/.$FILE-old"
-		cp "$HERE/$FILE" "$HOME/.$FILE"
-	else
-		echo 'target exists'
 	fi
 done
 
