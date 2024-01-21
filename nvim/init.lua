@@ -1,4 +1,4 @@
-require('plug')
-require('settings')
-require('plugins')
-require('maps')
+require("plug")
+require("settings")
+require("plugins")
+require("maps")
