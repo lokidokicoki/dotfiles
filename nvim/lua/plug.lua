@@ -57,14 +57,25 @@ Plug("jlanzarotta/bufexplorer")
 --languages
 Plug("editorconfig/editorconfig-vim")
 Plug("hail2u/vim-css3-syntax")
-Plug("honza/vim-snippets")
 Plug("mtscout6/vim-tagbar-css")
 Plug("myhere/vim-nodejs-complete")
 Plug("nono/jquery.vim")
 Plug("othree/html5.vim")
 Plug("othree/javascript-libraries-syntax.vim")
 Plug("rust-lang/rust.vim")
-Plug("szw/vim-tags")
 Plug("sheerun/vim-polyglot")
 
+-- lsp stuff
+Plug("neovim/nvim-lspconfig")
+Plug("hrsh7th/cmp-nvim-lsp")
+Plug("hrsh7th/cmp-buffer")
+Plug("hrsh7th/cmp-path")
+Plug("hrsh7th/cmp-cmdline")
+Plug("hrsh7th/nvim-cmp")
+Plug("L3MON4D3/LuaSnip") -- snippet engine
+Plug("saadparwaiz1/cmp_luasnip") -- for autocompletion
+Plug("rafamadriz/friendly-snippets") -- useful snippets
+
+-- used to install lsp-servers
+Plug("williamboman/mason.nvim")
 Plug.ends()
