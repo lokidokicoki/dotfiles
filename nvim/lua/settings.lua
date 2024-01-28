@@ -1,6 +1,5 @@
 local o = vim.o
 local ol = vim.opt_local
-local og = vim.opt_global
 local w = vim.wo
 local b = vim.bo
 
