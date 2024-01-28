@@ -7,6 +7,8 @@ _NB:_ you can provide machine specific overrides to the aliases and rc by creati
 - `$HOME/.machinerc`
 - `$home/.machine_aliases`
 
-Run `install_apps.sh` first then `setup.sh`.
+Run `install_apps.sh` first, then `setup.sh`.
 
-Open `vi` and run `PlugInstall`.
+Open `nvim` and run `:PlugInstall`.
+
+In `nvim`, run `:MasonInstall <lsp>`

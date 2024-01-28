@@ -3,48 +3,50 @@
 # need to document
 HERE=$(pwd)
 echo $HOME
-echo 'Setup dotfiles'
+echo "Setup dotfiles in $HOME"
 
-FILES_TO_LINK=('profile' 'bash_aliases' 'bashrc' 'git-prompt.sh' 'vimrc' 'inputrc' 'remarkrc.json')
+FILES_TO_LINK=('.profile' '.bash_aliases' '.bashrc' '.git-prompt.sh' '.inputrc' '.tmux.conf' '.remarkrc.json')
 
 ELEMENTS=${#FILES_TO_LINK[@]}
 
-echo "array count $ELEMENTS"
-
 for (( i=0;i<$ELEMENTS;i++)); do
-  FILE=${FILES_TO_LINK[${i}]}
-  echo "current file: $HOME/$FILE"
-  if [ ! -h $HOME/$FILE ]; then
-    echo "no link for $FILE"
-    if [ -f $HOME/$FILE ]; then
-      mv $HOME/$FILE $HOME/$FILE-old
-    fi
-    ln -s $HERE/$FILE $HOME/.$FILE
-  else
-    echo "link exists for file $FILE"
-  fi
+	FILE=${FILES_TO_LINK[${i}]}
+	SRC="$HERE/$FILE"
+	DEST="$HOME/$FILE"
+
+	echo "-> current file: $SRC -> $DEST"
+	if [ ! -L "$DEST" ]; then
+		echo "--> no symlink for $SRC, back up and link"
+		if [ -f "$DEST" ]; then
+			mv "$DEST" "$DEST"-old
+		fi
+		ln -s "$SRC" "$DEST"
+	else
+		echo "--> link exists for file $SRC, no action required"
+	fi
 done
 
 
-TEMPLATES_TO_COPY=('gitconfig')
+TEMPLATES_TO_COPY=('.gitconfig')
 
 ELEMENTS=${#TEMPLATES_TO_COPY[@]}
 
 echo "template array count $ELEMENTS"
 
 for (( i=0;i<$ELEMENTS;i++)); do
-  FILE=${TEMPLATES_TO_COPY[${i}]}
-  echo "current file: $HOME/.$FILE"
-  if [ ! -f "$HOME/.$FILE" ]; then
-    mv "$HOME/.$FILE" "$HOME/.$FILE-old"
-    cp "$HERE/$FILE" "$HOME/.$FILE"
-  else
-	echo "target $FILE exists"
-  fi
+	FILE=${TEMPLATES_TO_COPY[${i}]}
+	echo "current file: $HOME/$FILE"
+	if [ ! -f "$HOME/$FILE" ]; then
+		mv "$HOME/$FILE" "$HOME/$FILE-old"
+		cp "$HERE/$FILE" "$HOME/$FILE"
+	else
+		echo 'target exists'
+	fi
 done
 
-echo "create symlink for vim subdirs"
+if [ -d ~/.config/nvim -a -L ~/.config/nvim ]; then
+	echo ".config/nvim exists as dir and link"
 
-ln -s $HERE/vim $HOME/.vim
-
-ln -s $HERE/init.vim $HOME/.config/nvim/init.vim
+else
+	ln -s $HERE/nvim ~/.config/nvim
+fi
