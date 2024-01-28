@@ -132,6 +132,14 @@ function app_release {
 	echo "New $VERSION"
 }
 
+function dotfiles_release {
+	git fetch origin master
+	git checkout -B release origin/master
+	VERSION=$(cz bump --changelog --annotated-tag)
+	git push -o merge_request.create -o merge_request.remove_source_branch --force --follow-tags --set-upstream origin release
+	echo "New $VERSION"
+}
+
 if [ -f "$HOME/.bash_aliases" ]; then
 	source ~/.bash_aliases
 fi
